@@ -2,6 +2,11 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    ACTIVATE_HEADING: 'Kontoaktivierung',
+    TOKEN_EXPIRED: 'Ihr Aktivierungslink ist abgelaufen.',
+    ACTIVATE: 'Aktivieren',
+  },
   fr: {
     ACTIVATE_HEADING: 'Activation du compte',
     TOKEN_EXPIRED: "Votre lien d'activation du compte a expiré.",

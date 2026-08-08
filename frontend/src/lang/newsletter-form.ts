@@ -2,6 +2,12 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    TITLE: 'Newsletter abonnieren',
+    SUB_TITLE: 'Abonnieren Sie unseren Newsletter und verpassen Sie keine Neuigkeit!',
+    SUBSCRIBE: 'Abonnieren',
+    SUCCESS: 'Anmeldung erfolgreich!',
+  },
   fr: {
     TITLE: 'Abonnez-vous',
     SUB_TITLE: 'Abonnez-vous à notre liste de diffusion pour recevoir les dernières mises à jour !',

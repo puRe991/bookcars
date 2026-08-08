@@ -3,6 +3,74 @@ import * as langHelper from '@/utils/langHelper'
 import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
+  de: {
+    TITLE: 'Datenschutzerklärung',
+    PRIVACY_POLICY: `
+Der Schutz Ihrer Daten ist uns bei ${env.WEBSITE_NAME} wichtig. Diese Datenschutzerklärung beschreibt, wie wir Ihre Daten erheben, verwenden und schützen, wenn Sie unsere Website und unsere Dienste nutzen. Die Verarbeitung erfolgt nach den Vorgaben der Datenschutz-Grundverordnung (DSGVO) und des Bundesdatenschutzgesetzes (BDSG).
+
+
+1. Welche Daten wir erheben
+
+Wir erheben Daten, wenn Sie sich auf unserer Website registrieren, eine Buchung vornehmen oder unsere Dienste nutzen. Dazu können gehören:
+
+Name
+E-Mail-Adresse
+Telefonnummer
+Zahlungsdaten
+Mietpräferenzen
+Sie können unsere Website auch ohne Registrierung besuchen; einzelne Funktionen stehen dann jedoch nur eingeschränkt zur Verfügung.
+
+
+2. Zwecke und Rechtsgrundlagen der Verarbeitung
+
+Wir verarbeiten Ihre Daten insbesondere:
+
+zur Abwicklung Ihrer Buchungen und Zahlungen (Art. 6 Abs. 1 lit. b DSGVO),
+zur Verbesserung unseres Kundenservices (Art. 6 Abs. 1 lit. f DSGVO),
+zum Versand von E-Mails zu Ihrer Buchung sowie – bei entsprechender Einwilligung – zu weiteren Angeboten (Art. 6 Abs. 1 lit. a und b DSGVO),
+zur Beantwortung von Anfragen und Supportanliegen (Art. 6 Abs. 1 lit. b und f DSGVO).
+
+
+3. Wie wir Ihre Daten schützen
+
+Wir treffen geeignete technische und organisatorische Maßnahmen, um Ihre personenbezogenen Daten zu schützen. Sensible Daten werden verschlüsselt über gesicherte Server übertragen und sind nur berechtigten Personen zugänglich. Ihre Kreditkartendaten speichern wir nicht auf unseren Servern.
+
+
+4. Weitergabe Ihrer Daten
+
+Wir verkaufen oder vermieten Ihre personenbezogenen Daten nicht. Eine Weitergabe erfolgt nur an sorgfältig ausgewählte Auftragsverarbeiter und Partner, die uns beim Betrieb der Website, bei der Geschäftsabwicklung oder bei der Betreuung unserer Kundinnen und Kunden unterstützen und die zur Vertraulichkeit verpflichtet sind. Darüber hinaus geben wir Daten weiter, wenn wir gesetzlich dazu verpflichtet sind oder dies zur Durchsetzung unserer Nutzungsbedingungen bzw. zum Schutz von Rechten erforderlich ist.
+
+
+5. Speicherdauer
+
+Wir speichern Ihre personenbezogenen Daten nur so lange, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen – insbesondere handels- und steuerrechtlicher Art – dies vorschreiben.
+
+
+6. Daten von Kindern
+
+Unsere Dienste richten sich nicht an Kinder unter 16 Jahren. Wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 16 Jahren ohne Einwilligung der Erziehungsberechtigten. Sollten wir Kenntnis davon erlangen, löschen wir diese Daten unverzüglich.
+
+
+7. Änderungen dieser Datenschutzerklärung
+
+Wir können diese Datenschutzerklärung von Zeit zu Zeit anpassen. Änderungen veröffentlichen wir auf dieser Seite. Wir empfehlen Ihnen, diese Seite regelmäßig zu prüfen.
+
+
+8. Ihre Rechte
+
+Sie haben das Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO), auf Berichtigung (Art. 16 DSGVO), auf Löschung (Art. 17 DSGVO), auf Einschränkung der Verarbeitung (Art. 18 DSGVO), auf Datenübertragbarkeit (Art. 20 DSGVO) sowie auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO). Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Zudem steht Ihnen ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu.
+
+
+9. Kontakt
+
+Wenn Sie Fragen zu dieser Datenschutzerklärung oder zur Verarbeitung Ihrer Daten haben, erreichen Sie uns unter ${env.CONTACT_EMAIL}. Wir kümmern uns gern um Ihr Anliegen.
+
+
+10. Hinweis
+
+Mit der Nutzung unserer Dienste bestätigen Sie, dass Sie diese Datenschutzerklärung gelesen und verstanden haben.
+    `,
+  },
   fr: {
     TITLE: 'Politique de Confidentialité',
     PRIVACY_POLICY: `

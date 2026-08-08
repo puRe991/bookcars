@@ -2,6 +2,14 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    BANK_DETAILS: 'Bankverbindung',
+    ACCOUNT_HOLDER: 'Kontoinhaber',
+    BANK_NAME: 'Name der Bank',
+    IBAN: 'IBAN',
+    SWIFT_BIC: 'SWIFT/BIC',
+    SHOW_BANK_DETAILS_PAGE: 'Seite mit Bankverbindung anzeigen',
+  },
   fr: {
     BANK_DETAILS: 'Détails bancaires',
     ACCOUNT_HOLDER: 'Titulaire du compte',

@@ -3,6 +3,56 @@ import * as langHelper from '@/utils/langHelper'
 import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
+  de: {
+    TITLE: 'Cookie-Richtlinie',
+    POLICY: `
+Diese Cookie-Richtlinie erläutert, wie ${env.WEBSITE_NAME} („wir“, „uns“ oder „unser“) Cookies und ähnliche Technologien auf unserer Website einsetzt. Durch die Nutzung unserer Website stimmen Sie dem Einsatz von Cookies nach Maßgabe dieser Richtlinie zu.
+
+1. Was sind Cookies?
+
+Cookies sind kleine Textdateien, die auf Ihrem Endgerät (Computer, Tablet, Smartphone) gespeichert werden, wenn Sie eine Website besuchen. Sie verbessern Ihr Nutzungserlebnis, indem sie Ihre Einstellungen speichern und relevante Informationen oder Dienste bereitstellen.
+
+2. Arten von Cookies, die wir verwenden
+
+Wir setzen die folgenden Arten von Cookies ein:
+
+- Unbedingt erforderliche Cookies: Diese Cookies sind für den Betrieb der Website notwendig und können in unseren Systemen nicht deaktiviert werden.
+- Leistungs-Cookies: Diese Cookies helfen uns zu verstehen, wie Besucherinnen und Besucher mit unserer Website interagieren, indem sie Informationen anonym erfassen und auswerten.
+- Funktionale Cookies: Diese Cookies ermöglichen erweiterte Funktionen und eine personalisierte Darstellung.
+- Marketing-/Werbe-Cookies: Diese Cookies werden eingesetzt, um relevante Werbung auszuspielen und deren Wirksamkeit zu messen.
+
+3. Wie wir Cookies verwenden
+
+Wir verwenden Cookies, um:
+
+- Funktionalität und Leistung der Website zu verbessern.
+- die Nutzung der Website auszuwerten und unsere Dienste weiterzuentwickeln.
+- Ihr Nutzungserlebnis zu personalisieren und Ihre Einstellungen zu speichern.
+- Ihnen auf Ihre Interessen zugeschnittene Werbung anzuzeigen.
+
+4. Verwaltung Ihrer Cookie-Einstellungen
+
+Sie können Ihre Cookie-Einstellungen jederzeit über die Einstellungen Ihres Browsers anpassen. Die meisten Browser ermöglichen es Ihnen:
+
+- alle Cookies zu blockieren,
+- vorhandene Cookies zu löschen,
+- benachrichtigt zu werden, wenn ein Cookie gesetzt wird.
+
+Bitte beachten Sie, dass die Deaktivierung von Cookies Ihr Nutzungserlebnis auf unserer Website beeinträchtigen kann.
+
+5. Cookies von Drittanbietern
+
+Wir können Dienstleistern Dritter gestatten, Cookies auf unserer Website zu setzen, um den Website-Verkehr auszuwerten, Werbedienste bereitzustellen oder zusätzliche Funktionen zu ermöglichen. Für diese Cookies gelten die Datenschutzhinweise der jeweiligen Drittanbieter.
+
+6. Änderungen dieser Cookie-Richtlinie
+
+Wir können diese Cookie-Richtlinie von Zeit zu Zeit anpassen, um Änderungen der Technik, der Rechtslage oder unserer Praxis abzubilden. Die aktualisierte Fassung wird mit einem geänderten Datum „Zuletzt aktualisiert“ auf dieser Seite veröffentlicht.
+
+7. Kontakt
+
+Wenn Sie Fragen zu dieser Cookie-Richtlinie haben, kontaktieren Sie uns bitte unter: ${env.CONTACT_EMAIL}
+    `,
+  },
   fr: {
     TITLE: 'Politique de cookies',
     POLICY: `

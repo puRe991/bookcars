@@ -3,7 +3,7 @@ import { StyleSheet, View, Pressable, Text, Platform, StyleProp, ViewStyle } fro
 import DateTimePicker from '@react-native-community/datetimepicker'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { format } from 'date-fns'
-import { enUS, fr, es } from 'date-fns/locale'
+import { enUS, de, fr, es } from 'date-fns/locale'
 import { MaterialIcons } from '@expo/vector-icons'
 import * as bookcarsHelper from ':bookcars-helper'
 
@@ -46,7 +46,7 @@ const CustomDateTimePicker: React.FC<DateTimePickerProps> = ({
   const [showPicker, setShowPicker] = useState(false)
   const [formattedLabel, setFormattedLabel] = useState(label)
 
-  const localeMap = { fr, es, en: enUS }
+  const localeMap = { de, fr, es, en: enUS }
   const dateLocale = localeMap[initialLocale as keyof typeof localeMap] || enUS
   const dateFormat = mode === 'date' ? 'eeee, d LLLL yyyy' : 'kk:mm'
   const small = size === 'small'

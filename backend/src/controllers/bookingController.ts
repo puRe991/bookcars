@@ -110,7 +110,7 @@ export const notify = async (driver: env.User, bookingId: string, user: env.User
  */
 export const confirm = async (user: env.User, supplier: env.User, booking: env.Booking, payLater: boolean) => {
   const { language } = user
-  const locale = language === 'fr' ? 'fr-FR' : 'en-US'
+  const locale = language === 'de' ? 'de-DE' : language === 'fr' ? 'fr-FR' : language === 'es' ? 'es-ES' : 'en-US'
   const options: Intl.DateTimeFormatOptions = {
     weekday: 'long',
     month: 'long',

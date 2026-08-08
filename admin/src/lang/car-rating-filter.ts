@@ -2,6 +2,13 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    RATING: 'Bewertung',
+    RATING_1: '(ab 1)',
+    RATING_2: '(ab 2)',
+    RATING_3: '(ab 3)',
+    RATING_4: '(ab 4)',
+  },
   fr: {
     RATING: 'Classement',
     RATING_1: '(1 et plus)',

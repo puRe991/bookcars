@@ -2,6 +2,22 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SIGN_IN: 'Anmelden',
+    HOME: 'Startseite',
+    BOOKINGS: 'Buchungen',
+    ABOUT: 'Über uns',
+    TOS: 'Nutzungsbedingungen',
+    CONTACT: 'Kontakt',
+    LANGUAGE: 'Sprache',
+    SETTINGS: 'Einstellungen',
+    SIGN_OUT: 'Abmelden',
+    SUPPLIERS: 'Anbieter',
+    LOCATIONS: 'Standorte',
+    PRIVACY_POLICY: 'Datenschutzerklärung',
+    FAQ: 'Häufige Fragen',
+    COOKIE_POLICY: 'Cookie-Richtlinie',
+  },
   fr: {
     SIGN_IN: 'Se connecter',
     HOME: 'Accueil',

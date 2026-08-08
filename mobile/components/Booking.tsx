@@ -42,8 +42,9 @@ const Booking = ({
   today.setSeconds(0)
   today.setMilliseconds(0)
 
+  const _de = language === 'de'
   const _fr = bookcarsHelper.isFrench(language)
-  const _format = _fr ? 'eee d LLL yyyy kk:mm' : 'eee, d LLL yyyy, p'
+  const _format = _de ? 'eee, d. LLL yyyy, HH:mm' : _fr ? 'eee d LLL yyyy kk:mm' : 'eee, d LLL yyyy, p'
 
   const [loading, setLoading] = useState(true)
   const [currencySymbol, setCurrencySymbol] = useState('')

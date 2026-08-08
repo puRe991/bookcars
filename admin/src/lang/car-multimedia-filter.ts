@@ -2,6 +2,13 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    MULTIMEDIA: 'Multimedia',
+    TOUCHSCREEN: 'Touchscreen',
+    BLUETOOTH: 'Bluetooth',
+    ANDROID_AUTO: 'Android Auto',
+    APPLE_CAR_PLAY: 'Apple CarPlay',
+  },
   fr: {
     MULTIMEDIA: 'Multimédia',
     TOUCHSCREEN: 'Écran tactile',

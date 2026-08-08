@@ -23,7 +23,7 @@ import {
   Cancel as CancelIcon
 } from '@mui/icons-material'
 import { format } from 'date-fns'
-import { fr as dfnsFR, enUS as dfnsENUS, es as dfnsES } from 'date-fns/locale'
+import { de as dfnsDE, fr as dfnsFR, enUS as dfnsENUS, es as dfnsES } from 'date-fns/locale'
 import * as bookcarsTypes from ':bookcars-types'
 import * as bookcarsHelper from ':bookcars-helper'
 import * as BookingService from '@/services/BookingService'
@@ -379,10 +379,11 @@ const BookingList = ({
     }
   }
 
+  const _de = language === 'de'
   const _fr = language === 'fr'
   const _es = language === 'es'
-  const _locale = _fr ? dfnsFR : _es ? dfnsES : dfnsENUS
-  const _format = _fr ? 'eee d LLL yyyy kk:mm' : 'eee, d LLL yyyy, p'
+  const _locale = _de ? dfnsDE : _fr ? dfnsFR : _es ? dfnsES : dfnsENUS
+  const _format = _de ? 'eee, d. LLL yyyy, HH:mm' : _fr ? 'eee d LLL yyyy kk:mm' : 'eee, d LLL yyyy, p'
   const bookingDetailHeight = env.SUPPLIER_IMAGE_HEIGHT + 10
 
   return (

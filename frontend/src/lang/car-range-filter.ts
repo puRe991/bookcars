@@ -2,6 +2,13 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    RANGE: 'Kategorie',
+    MINI: 'Mini',
+    MIDI: 'Midi',
+    MAXI: 'Maxi',
+    SCOOTER: 'Roller',
+  },
   fr: {
     RANGE: 'Gamme',
     MINI: 'Mini',

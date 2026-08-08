@@ -2,6 +2,15 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    PICK_UP_DATE: 'Abholdatum',
+    DROP_OFF_DATE: 'Rückgabedatum',
+    DROP_OFF: 'Rückgabe am selben Ort',
+    MIN_PICK_UP_HOURS_ERROR: 'Die Abholzeit muss mindestens einige Stunden in der Zukunft liegen',
+    MIN_RENTAL_HOURS_ERROR: 'Die Mietdauer ist zu kurz',
+    INVALID_PICK_UP_TIME: 'Ungültige Abholzeit',
+    INVALID_DROP_OFF_TIME: 'Ungültige Rückgabezeit',
+  },
   fr: {
     PICK_UP_DATE: 'Date de prise en charge',
     DROP_OFF_DATE: 'Date de retour',

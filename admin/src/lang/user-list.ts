@@ -2,6 +2,12 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    DELETE_USER: 'Möchten Sie diesen Benutzer und alle zugehörigen Daten wirklich löschen?',
+    DELETE_USERS: 'Möchten Sie die ausgewählten Benutzer und alle zugehörigen Daten wirklich löschen?',
+    DELETE_SELECTION: 'Ausgewählte Benutzer löschen',
+    BLACKLIST: 'Zur Sperrliste hinzufügen',
+  },
   fr: {
     DELETE_USER: 'Êtes-vous sûr de vouloir supprimer cet utilisateur et toutes ses données ?',
     DELETE_USERS: 'Êtes-vous sûr de vouloir supprimer les utilisateurs sélectionnés et toutes leurs données ?',

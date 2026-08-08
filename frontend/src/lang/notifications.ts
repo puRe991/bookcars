@@ -2,6 +2,17 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    EMPTY_LIST: 'Keine Benachrichtigungen',
+    VIEW: 'Ansehen',
+    MARK_AS_READ: 'Als gelesen markieren',
+    MARK_AS_UNREAD: 'Als ungelesen markieren',
+    MARK_ALL_AS_READ: 'Alle als gelesen markieren',
+    MARK_ALL_AS_UNREAD: 'Alle als ungelesen markieren',
+    DELETE_ALL: 'Alle löschen',
+    DELETE_NOTIFICATION: 'Möchten Sie diese Benachrichtigung wirklich löschen?',
+    DELETE_NOTIFICATIONS: 'Möchten Sie diese Benachrichtigungen wirklich löschen?',
+  },
   fr: {
     EMPTY_LIST: 'Pas de notifications',
     VIEW: 'Consulter',

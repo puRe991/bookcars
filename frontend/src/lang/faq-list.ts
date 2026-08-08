@@ -2,6 +2,18 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    FAQ_TITLE: 'Häufige Fragen',
+    MORE_QUESTIONS: 'Weitere Fragen?',
+    FAQ_DOCUMENTS_TITLE: 'Welche Unterlagen benötige ich für die Anmietung?',
+    FAQ_DOCUMENTS_TEXT: 'Für die Anmietung benötigen Sie in der Regel einen gültigen Führerschein, eine Kreditkarte für Zahlung und Kaution sowie einen Versicherungsnachweis. Je nach Station und Fahrzeugtyp können weitere Anforderungen gelten.',
+    FAQ_SERVICES_TITLE: 'Bieten Sie Lieferung und Abholung an?',
+    FAQ_SERVICES_TEXT: 'Ja! Wir bieten einen komfortablen Liefer- und Abholservice an verschiedenen Orten an, unter anderem an Flughäfen und Hotels. Teilen Sie uns einfach Ihren Wunschort mit – um alles Weitere kümmern wir uns.',
+    FAQ_AGE_TITLE: 'Gibt es ein Mindestalter für die Anmietung?',
+    FAQ_AGE_TEXT: 'Ja, das Mindestalter für die Anmietung beträgt in der Regel 18 Jahre. An einzelnen Stationen oder für bestimmte Fahrzeugklassen können ein höheres Mindestalter oder zusätzliche Bedingungen gelten.',
+    FAQ_CANCEL_TITLE: 'Was passiert, wenn ich meine Buchung stornieren muss?',
+    FAQ_CANCEL_TEXT: 'Pläne können sich ändern – deshalb bieten wir flexible Stornierungsbedingungen. Je nach Zeitpunkt der Stornierung können Gebühren anfallen. Einzelheiten entnehmen Sie bitte unseren Bedingungen oder wenden Sie sich an unseren Kundenservice.',
+  },
   fr: {
     FAQ_TITLE: 'FAQ',
     MORE_QUESTIONS: 'Plus de questions ?',

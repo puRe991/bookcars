@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { fr, enUS, es } from 'date-fns/locale'
+import { de, fr, enUS, es } from 'date-fns/locale'
 import { Scheduler } from '@/components/scheduler/index'
 import {
   ProcessedEvent,
@@ -99,6 +99,42 @@ const VehicleScheduler = (
   }, [statuses, suppliers, filter]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const getTranslations = (_language: string) => {
+    if (_language === 'de') {
+      return {
+        navigation: {
+          month: 'Monat',
+          week: 'Woche',
+          day: 'Tag',
+          today: 'Heute',
+          agenda: 'Agenda',
+        },
+        form: {
+          addTitle: 'Termin hinzufügen',
+          editTitle: 'Termin bearbeiten',
+          confirm: 'Bestätigen',
+          delete: 'Löschen',
+          cancel: 'Abbrechen',
+        },
+        event: {
+          title: 'Titel',
+          subtitle: 'Untertitel',
+          start: 'Beginn',
+          end: 'Ende',
+          allDay: 'Ganztägig',
+        },
+        validation: {
+          required: 'Pflichtfeld',
+          invalidEmail: 'Ungültige E-Mail-Adresse',
+          onlyNumbers: 'Nur Zahlen erlaubt',
+          min: 'Mindestens {{min}} Zeichen',
+          max: 'Höchstens {{max}} Zeichen',
+        },
+        moreEvents: 'Mehr...',
+        noDataToDisplay: 'Keine Daten vorhanden',
+        loading: 'Wird geladen...',
+      }
+    }
+
     if (_language === 'fr') {
       return {
         navigation: {
@@ -211,7 +247,7 @@ const VehicleScheduler = (
     <Scheduler
       ref={schedulerRef}
       view="month"
-      locale={language === 'fr' ? fr : language === 'es' ? es : enUS}
+      locale={language === 'de' ? de : language === 'fr' ? fr : language === 'es' ? es : enUS}
       disableViewer
       editable={false}
       draggable={false}

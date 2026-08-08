@@ -30,6 +30,7 @@ export const __env__ = (name: string, required?: boolean, defaultValue?: string)
  * @type {string[]}
  */
 export const LANGUAGES = [
+  'de',
   'en',
   'fr',
   'es',
@@ -331,7 +332,7 @@ export const FRONTEND_HOST = __env__('BC_FRONTEND_HOST', true)
  *
  * @type {string}
  */
-export const DEFAULT_LANGUAGE = __env__('BC_DEFAULT_LANGUAGE', false, 'en')
+export const DEFAULT_LANGUAGE = __env__('BC_DEFAULT_LANGUAGE', false, 'de')
 
 /**
  * Default Minimum age for rental. Default is 21 years.
@@ -426,7 +427,7 @@ export const RECAPTCHA_SECRET = __env__('BC_RECAPTCHA_SECRET', false)
  *
  * @type {string}
  */
-export const TIMEZONE = __env__('BC_TIMEZONE', false, 'UTC')
+export const TIMEZONE = __env__('BC_TIMEZONE', false, 'Europe/Berlin')
 
 /**
  * ipinfo.io API key.
@@ -441,7 +442,7 @@ export const IPINFO_API_KEY = __env__('BC_IPINFO_API_KEY', false)
  *
  * @type {string}
  */
-export const IPINFO_DEFAULT_COUNTRY = __env__('BC_IPINFO_DEFAULT_COUNTRY', false, 'US')
+export const IPINFO_DEFAULT_COUNTRY = __env__('BC_IPINFO_DEFAULT_COUNTRY', false, 'DE')
 
 /**
  * Enables or disables Sentry error reporting. Set to true to enable.

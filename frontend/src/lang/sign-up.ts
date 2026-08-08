@@ -2,6 +2,11 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SIGN_UP_HEADING: 'Registrieren',
+    SIGN_UP: 'Registrieren',
+    SIGN_UP_ERROR: 'Bei der Registrierung ist ein Fehler aufgetreten.',
+  },
   fr: {
     SIGN_UP_HEADING: 'Inscription',
     SIGN_UP: "S'inscrire",

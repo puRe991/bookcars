@@ -2,6 +2,9 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    VIEW_ON_MAP: 'Auf Karte anzeigen',
+  },
   fr: {
     VIEW_ON_MAP: 'Voir sur la carte',
   },

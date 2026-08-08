@@ -2,6 +2,13 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SEATS: 'Sitzplätze',
+    TWO: '2 Sitzplätze',
+    FOUR: '4 Sitzplätze',
+    FIVE: '5 Sitzplätze',
+    FIVE_PLUS: '5+ Sitzplätze',
+  },
   fr: {
     SEATS: 'Sièges',
     TWO: '2 sièges',

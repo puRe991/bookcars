@@ -11,6 +11,11 @@ type Language = { code: string, countryCode: string, label: string }
  */
 const LANGUAGES: Language[] = [
   {
+    code: 'de',
+    countryCode: 'de',
+    label: 'Deutsch',
+  },
+  {
     code: 'en',
     countryCode: 'us',
     label: 'English',
@@ -37,12 +42,12 @@ type Currency = { code: string, symbol: string }
  */
 const CURRENCIES: Currency[] = [
   {
-    code: 'USD',
-    symbol: '$',
-  },
-  {
     code: 'EUR',
     symbol: '€',
+  },
+  {
+    code: 'USD',
+    symbol: '$',
   },
   {
     code: 'GBP',
@@ -78,8 +83,8 @@ const env = {
   API_HOST: String(import.meta.env.VITE_BC_API_HOST),
   LANGUAGES: LANGUAGES.map((l) => l.code),
   _LANGUAGES: LANGUAGES,
-  DEFAULT_LANGUAGE: String(import.meta.env.VITE_BC_DEFAULT_LANGUAGE || 'en'),
-  BASE_CURRENCY: String(import.meta.env.VITE_BC_BASE_CURRENCY || 'USD'),
+  DEFAULT_LANGUAGE: String(import.meta.env.VITE_BC_DEFAULT_LANGUAGE || 'de'),
+  BASE_CURRENCY: String(import.meta.env.VITE_BC_BASE_CURRENCY || 'EUR'),
   CURRENCIES,
   PAGE_SIZE: Number.parseInt(String(import.meta.env.VITE_BC_PAGE_SIZE), 10) || 30,
   CARS_PAGE_SIZE: Number.parseInt(String(import.meta.env.VITE_BC_CARS_PAGE_SIZE), 10) || 15,
@@ -130,9 +135,9 @@ const env = {
    */
   MIN_LOCATIONS: Number.parseInt(String(import.meta.env.VITE_BC_MIN_LOCATIONS), 10) || 4,
   HIDE_SUPPLIERS: (import.meta.env.VITE_BC_HIDE_SUPPLIERS && import.meta.env.VITE_BC_HIDE_SUPPLIERS.toLowerCase()) === 'true',
-  MAP_LATITUDE: Number(String(import.meta.env.VITE_BC_MAP_LATITUDE || '34.0268755')),
-  MAP_LONGITUDE: Number(String(import.meta.env.VITE_BC_MAP_LONGITUDE || '1.6528399999999976')),
-  MAP_ZOOM: Number(String(import.meta.env.VITE_BC_MAP_ZOOM || '5')),
+  MAP_LATITUDE: Number(String(import.meta.env.VITE_BC_MAP_LATITUDE || '51.1657')),
+  MAP_LONGITUDE: Number(String(import.meta.env.VITE_BC_MAP_LONGITUDE || '10.4515')),
+  MAP_ZOOM: Number(String(import.meta.env.VITE_BC_MAP_ZOOM || '6')),
   PASSWORD_MIN_LENGTH: 6,
 }
 
