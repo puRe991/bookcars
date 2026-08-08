@@ -112,6 +112,7 @@ describe('PUT /api/update-settings', () => {
       minRentalHours,
       minPickupDropoffHour,
       maxPickupDropoffHour,
+      vatRate,
     } = settings!
 
     // test success
@@ -120,6 +121,7 @@ describe('PUT /api/update-settings', () => {
       minRentalHours: 3,
       minPickupDropoffHour: 9,
       maxPickupDropoffHour: 19,
+      vatRate: 19,
     }
 
     let res = await request(app)
@@ -131,12 +133,14 @@ describe('PUT /api/update-settings', () => {
     expect(res.body.minRentalHours).toBe(payload.minRentalHours)
     expect(res.body.minPickupDropoffHour).toBe(payload.minPickupDropoffHour)
     expect(res.body.maxPickupDropoffHour).toBe(payload.maxPickupDropoffHour)
+    expect(res.body.vatRate).toBe(payload.vatRate)
     const _settings = await Setting.findOne({})
     expect(_settings).toBeTruthy()
     expect(_settings!.minPickupHours).toBe(payload.minPickupHours)
     expect(_settings!.minRentalHours).toBe(payload.minRentalHours)
     expect(_settings!.minPickupDropoffHour).toBe(payload.minPickupDropoffHour)
     expect(_settings!.maxPickupDropoffHour).toBe(payload.maxPickupDropoffHour)
+    expect(_settings!.vatRate).toBe(payload.vatRate)
 
     // test not found
     await Setting.deleteMany({})
@@ -151,6 +155,7 @@ describe('PUT /api/update-settings', () => {
       minRentalHours,
       minPickupDropoffHour,
       maxPickupDropoffHour,
+      vatRate,
     }).save()
 
     // test failure (simulate error)

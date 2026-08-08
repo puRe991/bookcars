@@ -16,6 +16,7 @@ import Notification from '../models/Notification'
 import NotificationCounter from '../models/NotificationCounter'
 import PushToken from '../models/PushToken'
 import AdditionalDriver from '../models/AdditionalDriver'
+import Setting from '../models/Setting'
 import * as helper from '../utils/helper'
 import * as mailHelper from '../utils/mailHelper'
 import * as env from '../config/env.config'
@@ -31,6 +32,27 @@ import stripeAPI from '../payment/stripe'
  * @param {Response} res
  * @returns {unknown}
  */
+/**
+ * Stamp the VAT that applies to a booking.
+ *
+ * The rate is read from the settings server-side rather than taken from the
+ * request, and stored on the booking so that a later rate change leaves
+ * historical bookings untouched. `price` is gross, so the VAT is the share
+ * contained in it, not an extra charge.
+ *
+ * @async
+ * @param {bookcarsTypes.Booking} booking
+ * @returns {Promise<void>}
+ */
+const applyVat = async (booking: bookcarsTypes.Booking) => {
+  const settings = await Setting.findOne({})
+  const vatRate = settings?.vatRate ?? 0
+  const { vat } = helper.getVatBreakdown(booking.price || 0, vatRate)
+
+  booking.vatRate = vatRate
+  booking.vatAmount = vat
+}
+
 export const create = async (req: Request, res: Response) => {
   try {
     const { body }: { body: bookcarsTypes.UpsertBookingPayload } = req
@@ -40,6 +62,7 @@ export const create = async (req: Request, res: Response) => {
       body.booking._additionalDriver = additionalDriver._id.toString()
     }
 
+    await applyVat(body.booking)
     const booking = new Booking(body.booking)
 
     await booking.save()
@@ -345,6 +368,7 @@ export const checkout = async (req: Request, res: Response) => {
       body.booking._additionalDriver = additionalDriver._id.toString()
     }
 
+    await applyVat(body.booking)
     const booking = new Booking(body.booking)
 
     await booking.save()

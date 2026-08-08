@@ -312,6 +312,60 @@ export const updateUser = (data: bookcarsTypes.UpdateUserPayload): Promise<numbe
     .then((res) => res.status)
 
 /**
+ * Request a newsletter subscription. Sends a confirmation email; the address is
+ * only subscribed once that link is followed (double opt-in).
+ *
+ * @param {string} email
+ * @returns {Promise<number>}
+ */
+export const subscribeToNewsletter = (email: string): Promise<number> =>
+  axiosInstance
+    .post('/api/newsletter-subscribe', { email })
+    .then((res) => res.status)
+
+/**
+ * Confirm a newsletter subscription.
+ *
+ * @param {string} email
+ * @param {string} token
+ * @returns {Promise<number>}
+ */
+export const confirmNewsletter = (email: string, token: string): Promise<number> =>
+  axiosInstance
+    .post(`/api/newsletter-confirm/${encodeURIComponent(email)}/${encodeURIComponent(token)}`)
+    .then((res) => res.status)
+
+/**
+ * Delete the signed-in user's own account (GDPR Art. 17).
+ *
+ * Booking records are retained in anonymised form to satisfy statutory
+ * retention periods; everything purely personal is removed.
+ *
+ * @returns {Promise<number>}
+ */
+export const deleteSelf = (): Promise<number> =>
+  axiosInstance
+    .post(
+      '/api/delete-self',
+      null,
+      { withCredentials: true }
+    )
+    .then((res) => res.status)
+
+/**
+ * Download the signed-in user's personal data as JSON (GDPR Art. 15 and 20).
+ *
+ * @returns {Promise<Blob>}
+ */
+export const exportSelf = (): Promise<Blob> =>
+  axiosInstance
+    .get(
+      '/api/export-self',
+      { withCredentials: true, responseType: 'blob' }
+    )
+    .then((res) => res.data)
+
+/**
  * Update email notifications flag.
  *
  * @param {bookcarsTypes.UpdateEmailNotificationsPayload} data

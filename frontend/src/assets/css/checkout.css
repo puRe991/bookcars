@@ -255,3 +255,9 @@ div.checkout .btn-cancel {
     width: 390px;
   }
 }
+
+div.checkout div.payment-info div.payment-info-vat {
+  font-size: 13px;
+  color: rgb(0 0 0 / 60%);
+  margin-top: 2px;
+}

@@ -61,3 +61,10 @@ div.settings .settings-net-wrapper {
     padding: 30px;
   }
 }
+
+div.settings p.settings-privacy-info {
+  margin: 12px 0 8px;
+  font-size: 13px;
+  color: rgb(0 0 0 / 60%);
+  max-width: 520px;
+}

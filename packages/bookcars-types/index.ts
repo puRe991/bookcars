@@ -107,6 +107,10 @@ export interface Booking {
   isDeposit?: boolean
   isPayedInFull?: boolean
   paypalOrderId?: string
+  /** VAT rate in percent that applied when the booking was made. */
+  vatRate?: number
+  /** VAT share of `price`, which is a gross amount. */
+  vatAmount?: number
 }
 
 export interface CheckoutPayload {
@@ -627,6 +631,12 @@ export interface Setting {
   minRentalHours: number
   minPickupDropoffHour: number
   maxPickupDropoffHour: number
+  /**
+   * VAT rate in percent applied to rental prices, e.g. 19 for Germany.
+   * All prices in the system are gross (VAT inclusive), so this rate is used
+   * to disclose the VAT share rather than to add anything on top.
+   */
+  vatRate: number
 }
 
 export interface UpdateSettingsPayload {
@@ -634,6 +644,21 @@ export interface UpdateSettingsPayload {
   minRentalHours: number
   minPickupDropoffHour: number
   maxPickupDropoffHour: number
+  vatRate: number
+}
+
+/**
+ * Gross/net split of a price for a given VAT rate.
+ */
+export interface NewsletterSubscribePayload {
+  email: string
+}
+
+export interface VatBreakdown {
+  gross: number
+  net: number
+  vat: number
+  rate: number
 }
 
 // 

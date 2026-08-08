@@ -111,6 +111,20 @@ const bookingSchema = new Schema<env.Booking>(
     paypalOrderId: {
       type: String,
     },
+    //
+    // VAT applied when the booking was made. Stored on the booking so that a
+    // later change to the configured rate does not rewrite past records.
+    // `price` is gross, `vatAmount` is the VAT share contained in it.
+    //
+    vatRate: {
+      type: Number,
+      min: 0,
+      max: 100,
+    },
+    vatAmount: {
+      type: Number,
+      min: 0,
+    },
     expireAt: {
       //
       // Bookings created from checkout with Stripe are temporary and

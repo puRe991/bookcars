@@ -64,6 +64,7 @@ const Faq = lazy(() => import('@/pages/Faq'))
 const CookiePolicy = lazy(() => import('@/pages/CookiePolicy'))
 const Impressum = lazy(() => import('@/pages/Impressum'))
 const Withdrawal = lazy(() => import('@/pages/Withdrawal'))
+const NewsletterConfirm = lazy(() => import('@/pages/NewsletterConfirm'))
 
 const AppLayout = () => {
   const location = useLocation()
@@ -126,6 +127,7 @@ const router = createBrowserRouter([
       { path: 'cookie-policy', element: <CookiePolicy /> },
       { path: 'impressum', element: <Impressum /> },
       { path: 'imprint', element: <Impressum /> },
+      { path: 'newsletter-confirm', element: <NewsletterConfirm /> },
       { path: 'widerruf', element: <Withdrawal /> },
       { path: 'withdrawal', element: <Withdrawal /> },
       ...(env.HIDE_SUPPLIERS ? [] : [{ path: 'suppliers', element: <Suppliers /> }]),

@@ -24,6 +24,16 @@ const settingSchema = new Schema<env.Setting>({
     min: 0,
     max: 23,
   },
+  //
+  // VAT rate in percent. Prices are stored and charged gross, so this only
+  // controls how the VAT share is disclosed. Defaults to the German rate.
+  //
+  vatRate: {
+    type: Number,
+    default: 19,
+    min: 0,
+    max: 100,
+  },
 }, {
   timestamps: true,
   strict: true,

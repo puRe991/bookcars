@@ -30,6 +30,7 @@ const SettingForm = ({ settings, onSubmit: onFormSubmit }: SettingFormProps) => 
       setValue('minRentalHours', settings.minRentalHours.toString())
       setValue('minPickupDropoffHour', settings.minPickupDropoffHour.toString())
       setValue('maxPickupDropoffHour', settings.maxPickupDropoffHour.toString())
+      setValue('vatRate', settings.vatRate.toString())
     }
   }, [settings, setValue])
 
@@ -40,6 +41,7 @@ const SettingForm = ({ settings, onSubmit: onFormSubmit }: SettingFormProps) => 
         minRentalHours: Number(data.minRentalHours),
         minPickupDropoffHour: Number(data.minPickupDropoffHour),
         maxPickupDropoffHour: Number(data.maxPickupDropoffHour),
+        vatRate: Number(data.vatRate),
       }
 
       const { status, data: res } = await SettingService.updateSettings(payload)
@@ -91,6 +93,15 @@ const SettingForm = ({ settings, onSubmit: onFormSubmit }: SettingFormProps) => 
           <Input {...register('maxPickupDropoffHour')} type="text" required autoComplete="off" />
           {errors.maxPickupDropoffHour && (
             <FormHelperText error>{errors.maxPickupDropoffHour.message}</FormHelperText>
+          )}
+        </FormControl>
+
+        <FormControl fullWidth margin="dense">
+          <InputLabel className="required">{strings.VAT_RATE}</InputLabel>
+          <Input {...register('vatRate')} type="text" required autoComplete="off" />
+          <FormHelperText>{strings.VAT_RATE_INFO}</FormHelperText>
+          {errors.vatRate && (
+            <FormHelperText error>{errors.vatRate.message}</FormHelperText>
           )}
         </FormControl>
 

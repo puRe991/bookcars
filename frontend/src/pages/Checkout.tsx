@@ -64,6 +64,7 @@ import ViewOnMapButton from '@/components/ViewOnMapButton'
 import MapDialog from '@/components/MapDialog'
 import Backdrop from '@/components/SimpleBackdrop'
 import Unauthorized from '@/components/Unauthorized'
+import { useSetting } from '@/context/SettingContext'
 
 import '@/assets/css/checkout.css'
 
@@ -91,6 +92,7 @@ const Checkout = () => {
   const [emailRegistered, setEmailRegistered] = useState(false)
   const [emailInfo, setEmailInfo] = useState(true)
   const [phoneInfo, setPhoneInfo] = useState(true)
+  const { settings } = useSetting()
   const [price, setPrice] = useState(0)
   const [depositPrice, setDepositPrice] = useState(0)
   const [success, setSuccess] = useState(false)
@@ -121,6 +123,7 @@ const Checkout = () => {
   const _locale = _de ? de : _fr ? fr : _es ? es : enUS
   const _format = _de ? 'eee, d. LLL yyyy, HH:mm' : _fr ? 'eee d LLL yyyy kk:mm' : _es ? 'eee, d LLLL yyyy HH:mm' : 'eee, d LLL yyyy, p'
   const bookingDetailHeight = env.SUPPLIER_IMAGE_HEIGHT + 10
+  const vatRate = settings?.vatRate ?? 0
   const days = bookcarsHelper.days(from, to)
   const daysLabel = from && to && `${helper.getDaysShort(days)} (${bookcarsHelper.capitalize(format(from, _format, { locale: _locale }))} - ${bookcarsHelper.capitalize(format(to, _format, { locale: _locale }))})`
 
@@ -905,6 +908,18 @@ const Checkout = () => {
                             , commonStrings.CURRENCY, language)
                         }
                       </div>
+                      {vatRate > 0 && (
+                        <div className="payment-info-vat">
+                          {`${strings.VAT_INCLUDED} (${vatRate} %): ${bookcarsHelper.formatPrice(
+                            bookcarsHelper.getVatBreakdown(
+                              payDeposit ? depositPrice : payInFull ? (price + depositPrice) : price,
+                              vatRate,
+                            ).vat,
+                            commonStrings.CURRENCY,
+                            language,
+                          )}`}
+                        </div>
+                      )}
                     </div>
 
                     {(!car.supplier.payLater || !payLater) && (

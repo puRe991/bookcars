@@ -9,7 +9,6 @@ import {
 } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as bookcarsTypes from ':bookcars-types'
 import env from '@/config/env.config'
 import { strings as commonStrings } from '@/lang/common'
 import { strings } from '@/lang/newsletter-form'
@@ -43,18 +42,11 @@ const NewsletterForm = () => {
         return
       }
 
-      const payload: bookcarsTypes.SendEmailPayload = {
-        from: email,
-        to: env.CONTACT_EMAIL,
-        subject: 'New Newsletter Subscription',
-        message: '',
-        isContactForm: false,
-      }
-      const status = await UserService.sendEmail(payload)
+      const status = await UserService.subscribeToNewsletter(email)
 
       if (status === 200) {
         reset()
-        helper.info(strings.SUCCESS)
+        helper.info(strings.CONFIRMATION_SENT)
       } else {
         helper.error()
       }

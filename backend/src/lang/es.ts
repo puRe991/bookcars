@@ -46,6 +46,10 @@ export const es = {
   FROM: 'De',
   MESSAGE: 'Mensaje',
   LOCATION_IMAGE_NOT_FOUND: 'Imagen del lugar no encontrada',
+  NEWSLETTER_CONFIRM_SUBJECT: 'Confirme su suscripción al boletín',
+  NEWSLETTER_CONFIRM_INTRO: 'Se ha suscrito a nuestro boletín.',
+  NEWSLETTER_CONFIRM_LINK: 'Confirme su suscripción mediante el siguiente enlace:',
+  NEWSLETTER_CONFIRM_IGNORE: 'Si no ha sido usted, ignore este correo. Sin su confirmación no recibirá ningún boletín.',
   NEW_CAR_NOTIFICATION_PART1: 'El proveedor ',
   NEW_CAR_NOTIFICATION_PART2: ' creó un nuevo coche.',
 }

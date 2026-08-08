@@ -8,7 +8,11 @@ import {
   FormControlLabel,
   Switch,
   Button,
-  Paper
+  Paper,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from '@mui/material'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -36,6 +40,8 @@ const Settings = () => {
   const [visible, setVisible] = useState(false)
   const [loading, setLoading] = useState(true)
   const [enableEmailNotifications, setEnableEmailNotifications] = useState(false)
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
+  const [deleting, setDeleting] = useState(false)
 
   const { register, control, handleSubmit, formState: { errors, isSubmitting }, clearErrors, setValue } = useForm<FormFields>({
     resolver: zodResolver(schema),
@@ -43,6 +49,40 @@ const Settings = () => {
   })
 
   const birthDate = useWatch({ control, name: 'birthDate' })
+
+  const handleExportData = async () => {
+    try {
+      const blob = await UserService.exportSelf()
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'personal-data.json'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    } catch (err) {
+      helper.error(err, strings.EXPORT_DATA_ERROR)
+    }
+  }
+
+  const handleDeleteAccount = async () => {
+    try {
+      setDeleting(true)
+      const status = await UserService.deleteSelf()
+
+      if (status === 200) {
+        await UserService.signout(true)
+      } else {
+        helper.error(undefined, strings.DELETE_ACCOUNT_ERROR)
+      }
+    } catch (err) {
+      helper.error(err, strings.DELETE_ACCOUNT_ERROR)
+    } finally {
+      setDeleting(false)
+      setOpenDeleteDialog(false)
+    }
+  }
 
   const handleEmailNotificationsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -230,7 +270,44 @@ const Settings = () => {
               </FormControl>
             </Paper>
 
+            <Paper className="settings-net settings-net-wrapper" elevation={10}>
+              <h1 className="settings-form-title">{strings.PRIVACY_TITLE}</h1>
+
+              <p className="settings-privacy-info">{strings.EXPORT_DATA_INFO}</p>
+              <Button
+                variant="outlined"
+                color="primary"
+                className="btn-margin-bottom"
+                onClick={handleExportData}
+              >
+                {strings.EXPORT_DATA}
+              </Button>
+
+              <p className="settings-privacy-info">{strings.DELETE_ACCOUNT_INFO}</p>
+              <Button
+                variant="outlined"
+                color="error"
+                className="btn-margin-bottom"
+                onClick={() => setOpenDeleteDialog(true)}
+              >
+                {strings.DELETE_ACCOUNT}
+              </Button>
+            </Paper>
+
           </div>
+
+          <Dialog disableEscapeKeyDown maxWidth="xs" open={openDeleteDialog}>
+            <DialogTitle className="dialog-header">{commonStrings.CONFIRM_TITLE}</DialogTitle>
+            <DialogContent className="dialog-content">{strings.DELETE_ACCOUNT_CONFIRM}</DialogContent>
+            <DialogActions className="dialog-actions">
+              <Button onClick={() => setOpenDeleteDialog(false)} variant="outlined" color="primary" className="btn-secondary" disabled={deleting}>
+                {commonStrings.CANCEL}
+              </Button>
+              <Button onClick={handleDeleteAccount} variant="contained" color="error" disabled={deleting}>
+                {strings.DELETE_ACCOUNT}
+              </Button>
+            </DialogActions>
+          </Dialog>
 
           <Footer />
         </>

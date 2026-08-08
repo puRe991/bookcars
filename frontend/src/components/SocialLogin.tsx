@@ -11,6 +11,7 @@ import { strings as commonStrings } from '@/lang/common'
 import env from '@/config/env.config'
 import * as UserService from '@/services/UserService'
 import { useUserContext, UserContextType } from '@/context/UserContext'
+import DeferredSocialButton from '@/components/DeferredSocialButton'
 
 import FacebookIcon from '@/assets/img/facebook-icon.png'
 import AppleIcon from '@/assets/img/apple-icon.png'
@@ -104,56 +105,71 @@ const SocialLogin = ({
 
       <div className="login-buttons">
         {facebook && (
-          <LoginSocialFacebook
-            appId={env.FB_APP_ID}
-            redirect_uri={REDIRECT_URI}
-            onResolve={({ data }: IResolveParams) => {
-              loginSuccess(bookcarsTypes.SocialSignInType.Facebook, data?.accessToken, data?.email, data?.name, data?.picture?.data?.url)
-            }}
-            onReject={(err: any) => {
-              loginError(err)
-            }}
-            className="social"
-          >
-            <img alt="Facebook" src={FacebookIcon} className="social" />
-          </LoginSocialFacebook>
+          <DeferredSocialButton alt="Facebook" icon={FacebookIcon}>
+            {(onLoginStart) => (
+              <LoginSocialFacebook
+                appId={env.FB_APP_ID}
+                redirect_uri={REDIRECT_URI}
+                onLoginStart={onLoginStart}
+                onResolve={({ data }: IResolveParams) => {
+                  loginSuccess(bookcarsTypes.SocialSignInType.Facebook, data?.accessToken, data?.email, data?.name, data?.picture?.data?.url)
+                }}
+                onReject={(err: any) => {
+                  loginError(err)
+                }}
+                className="social"
+              >
+                <img alt="Facebook" src={FacebookIcon} className="social" />
+              </LoginSocialFacebook>
+            )}
+          </DeferredSocialButton>
         )}
 
         {apple && (
-          <LoginSocialApple
-            client_id={env.APPLE_ID}
-            scope="name email"
-            redirect_uri={REDIRECT_URI}
-            onResolve={({ data }: IResolveParams) => {
-              const email = data?.user?.email || getEmail(String(data?.id_token))
-              loginSuccess(bookcarsTypes.SocialSignInType.Apple, data?.id_token, email, data?.user ? `${data?.user?.firstName} ${data?.user?.lastName}` : email)
-            }}
-            onReject={(err: any) => {
-              loginError(err)
-            }}
-            className="social"
-          >
-            <img alt="Apple" src={AppleIcon} className="social" />
-          </LoginSocialApple>
+          <DeferredSocialButton alt="Apple" icon={AppleIcon}>
+            {(onLoginStart) => (
+              <LoginSocialApple
+                client_id={env.APPLE_ID}
+                scope="name email"
+                redirect_uri={REDIRECT_URI}
+                onLoginStart={onLoginStart}
+                onResolve={({ data }: IResolveParams) => {
+                  const email = data?.user?.email || getEmail(String(data?.id_token))
+                  loginSuccess(bookcarsTypes.SocialSignInType.Apple, data?.id_token, email, data?.user ? `${data?.user?.firstName} ${data?.user?.lastName}` : email)
+                }}
+                onReject={(err: any) => {
+                  loginError(err)
+                }}
+                className="social"
+              >
+                <img alt="Apple" src={AppleIcon} className="social" />
+              </LoginSocialApple>
+            )}
+          </DeferredSocialButton>
         )}
 
         {google && (
-          <LoginSocialGoogle
-            client_id={env.GG_APP_ID}
-            typeResponse="idToken"
-            redirect_uri={REDIRECT_URI}
-            scope="openid profile email"
-            discoveryDocs="claims_supported"
-            onResolve={({ data }: IResolveParams) => {
-              loginSuccess(bookcarsTypes.SocialSignInType.Google, data?.credential, data?.email, data?.name || data?.email, data?.picture)
-            }}
-            onReject={(err: any) => {
-              loginError(err)
-            }}
-            className="social"
-          >
-            <img alt="Google" src={GoogleIcon} className="social" />
-          </LoginSocialGoogle>
+          <DeferredSocialButton alt="Google" icon={GoogleIcon}>
+            {(onLoginStart) => (
+              <LoginSocialGoogle
+                client_id={env.GG_APP_ID}
+                typeResponse="idToken"
+                redirect_uri={REDIRECT_URI}
+                scope="openid profile email"
+                discoveryDocs="claims_supported"
+                onLoginStart={onLoginStart}
+                onResolve={({ data }: IResolveParams) => {
+                  loginSuccess(bookcarsTypes.SocialSignInType.Google, data?.credential, data?.email, data?.name || data?.email, data?.picture)
+                }}
+                onReject={(err: any) => {
+                  loginError(err)
+                }}
+                className="social"
+              >
+                <img alt="Google" src={GoogleIcon} className="social" />
+              </LoginSocialGoogle>
+            )}
+          </DeferredSocialButton>
         )}
       </div>
     </div>

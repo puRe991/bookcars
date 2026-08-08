@@ -9,11 +9,17 @@ const validateHour = (val: string) => {
   return Number.isFinite(hour) && hour >= 0 && hour <= 23
 }
 
+const validateVatRate = (val: string) => {
+  const rate = parseFloat(val)
+  return Number.isFinite(rate) && rate >= 0 && rate <= 100
+}
+
 export const schema = z.object({
   minPickupHours: z.string().refine((val) => !val || (numberRegex.test(val) && Number.parseFloat(val) >= 1), { message: commonStrings.FIELD_NOT_VALID }),
   minRentalHours: z.string().refine((val) => !val || (numberRegex.test(val) && Number.parseFloat(val) >= 1), { message: commonStrings.FIELD_NOT_VALID }),
   minPickupDropoffHour: z.string().refine((val) => !val || (numberRegex.test(val) && validateHour(val)), { message: commonStrings.FIELD_NOT_VALID }),
   maxPickupDropoffHour: z.string().refine((val) => !val || (numberRegex.test(val) && validateHour(val)), { message: commonStrings.FIELD_NOT_VALID }),
+  vatRate: z.string().refine((val) => !val || validateVatRate(val), { message: commonStrings.FIELD_NOT_VALID }),
 })
 
 export type FormFields = z.infer<typeof schema>

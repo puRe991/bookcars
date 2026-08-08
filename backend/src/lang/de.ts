@@ -46,6 +46,10 @@ export const de = {
   FROM: 'Von',
   MESSAGE: 'Nachricht',
   LOCATION_IMAGE_NOT_FOUND: 'Bild des Standorts nicht gefunden',
+  NEWSLETTER_CONFIRM_SUBJECT: 'Bitte bestätigen Sie Ihre Newsletter-Anmeldung',
+  NEWSLETTER_CONFIRM_INTRO: 'Sie haben sich für unseren Newsletter angemeldet.',
+  NEWSLETTER_CONFIRM_LINK: 'Bitte bestätigen Sie Ihre Anmeldung über den folgenden Link:',
+  NEWSLETTER_CONFIRM_IGNORE: 'Wenn Sie sich nicht angemeldet haben, ignorieren Sie diese E-Mail einfach. Ohne Ihre Bestätigung erhalten Sie keinen Newsletter.',
   NEW_CAR_NOTIFICATION_PART1: 'Der Anbieter ',
   NEW_CAR_NOTIFICATION_PART2: ' hat ein neues Fahrzeug angelegt.',
 }

@@ -445,6 +445,14 @@ export const IPINFO_API_KEY = __env__('BC_IPINFO_API_KEY', false)
 export const IPINFO_DEFAULT_COUNTRY = __env__('BC_IPINFO_DEFAULT_COUNTRY', false, 'DE')
 
 /**
+ * How long an unconfirmed newsletter subscription is kept before it is removed,
+ * in seconds. Defaults to 7 days.
+ *
+ * @type {number}
+ */
+export const NEWSLETTER_CONFIRMATION_EXPIRE_AT = Number.parseInt(__env__('BC_NEWSLETTER_CONFIRMATION_EXPIRE_AT', false, '604800'), 10)
+
+/**
  * Enables or disables Sentry error reporting. Set to true to enable.
  *
  * @type {boolean}
@@ -632,6 +640,8 @@ export interface Booking extends Document {
   isDeposit: boolean
   isPayedInFull?: boolean
   paypalOrderId?: string
+  vatRate?: number
+  vatAmount?: number
 }
 
 /**
@@ -935,11 +945,21 @@ export interface BankDetails extends Document {
  * @typedef {BankDetails}
  * @extends {Document}
  */
+export interface NewsletterSubscription extends Document {
+  email: string
+  confirmed: boolean
+  token: string
+  confirmedAt?: Date
+  confirmationIp?: string
+  pendingExpireAt?: Date
+}
+
 export interface Setting extends Document {
   minPickupHours: number
   minRentalHours: number
   minPickupDropoffHour: number
   maxPickupDropoffHour: number
+  vatRate: number
 }
 
 /**

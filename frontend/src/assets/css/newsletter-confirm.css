@@ -1,0 +1,25 @@
+div.newsletter-confirm {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  transform: translate3d(0, 0, 0);
+  padding: 50px 20%;
+  font-size: 15px;
+  color: #121212;
+  min-height: 100vh;
+}
+
+div.newsletter-confirm h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+div.newsletter-confirm p.error {
+  color: #b3261e;
+}
+
+@media only screen and (width <=960px) {
+  div.newsletter-confirm {
+    padding: 30px 20px;
+  }
+}

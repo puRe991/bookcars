@@ -1885,6 +1885,157 @@ export const deleteUsers = async (req: Request, res: Response) => {
 }
 
 /**
+ * Delete the signed-in user's own account (GDPR Art. 17).
+ *
+ * Only drivers may delete themselves. Supplier and admin accounts stay
+ * admin-managed, because removing one cascades into fleets and other people's
+ * bookings.
+ *
+ * Booking records are NOT deleted: German commercial and tax law requires them
+ * to be retained (§ 147 AO). Instead the account is anonymised, which removes
+ * the personal data while leaving the accounting trail referentially intact.
+ * Everything that is purely personal - avatar, driving licence, notifications,
+ * tokens - is deleted outright.
+ *
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const deleteSelf = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?._id
+
+    if (!userId) {
+      res.sendStatus(401)
+      return
+    }
+
+    const user = await User.findById(userId)
+
+    if (!user) {
+      res.sendStatus(204)
+      return
+    }
+
+    if (user.type !== bookcarsTypes.UserType.User) {
+      logger.error(`[user.deleteSelf] Non-driver account ${userId} attempted self-deletion`)
+      res.status(403).send('Forbidden: only driver accounts can be deleted this way')
+      return
+    }
+
+    // Purely personal artefacts are removed for good.
+    if (user.avatar) {
+      const avatar = path.join(env.CDN_USERS, user.avatar)
+      if (await helper.pathExists(avatar)) {
+        await asyncFs.unlink(avatar)
+      }
+    }
+
+    if (user.license) {
+      const license = path.join(env.CDN_LICENSES, user.license)
+      if (await helper.pathExists(license)) {
+        await asyncFs.unlink(license)
+      }
+    }
+
+    await NotificationCounter.deleteMany({ user: userId })
+    await Notification.deleteMany({ user: userId })
+    await PushToken.deleteMany({ user: userId })
+    await Token.deleteMany({ user: userId })
+
+    // Anonymise the account itself, keeping the _id so bookings stay linked.
+    const anonymousEmail = `deleted-${user._id.toString()}@deleted.invalid`
+    user.email = anonymousEmail
+    user.fullName = 'Deleted user'
+    user.phone = undefined
+    user.birthDate = undefined
+    user.location = undefined
+    user.bio = undefined
+    user.avatar = undefined
+    user.license = undefined
+    user.password = undefined
+    user.customerId = undefined
+    user.active = false
+    user.verified = false
+    user.enableEmailNotifications = false
+    user.blacklisted = true
+    await user.save()
+
+    logger.info(`[user.deleteSelf] Account ${userId} anonymised on user request`)
+
+    res.clearCookie(authHelper.getAuthCookieName(req))
+    res.sendStatus(200)
+  } catch (err) {
+    logger.error(`[user.deleteSelf] ${i18n.t('ERROR')}`, err)
+    res.status(400).send(i18n.t('ERROR') + err)
+  }
+}
+
+/**
+ * Export the signed-in user's personal data (GDPR Art. 15 and 20).
+ *
+ * Returns a machine-readable snapshot of everything stored about the user.
+ *
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const exportSelf = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?._id
+
+    if (!userId) {
+      res.sendStatus(401)
+      return
+    }
+
+    const user = await User
+      .findById(userId)
+      .select('-password -customerId')
+      .lean()
+
+    if (!user) {
+      res.sendStatus(204)
+      return
+    }
+
+    const bookings = await Booking
+      .find({ driver: userId })
+      .populate<{ car: env.Car }>({ path: 'car', select: 'name' })
+      .populate<{ supplier: env.User }>({ path: 'supplier', select: 'fullName' })
+      .select('-__v')
+      .lean()
+
+    const additionalDrivers = await AdditionalDriver
+      .find({ _id: { $in: bookings.map((booking) => booking._additionalDriver).filter(Boolean) } })
+      .select('-__v')
+      .lean()
+
+    const notifications = await Notification
+      .find({ user: userId })
+      .select('-__v')
+      .lean()
+
+    const data = {
+      exportedAt: new Date().toISOString(),
+      account: user,
+      bookings,
+      additionalDrivers,
+      notifications,
+    }
+
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+    res.setHeader('Content-Disposition', 'attachment; filename="personal-data.json"')
+    res.send(JSON.stringify(data, null, 2))
+  } catch (err) {
+    logger.error(`[user.exportSelf] ${i18n.t('ERROR')}`, err)
+    res.status(400).send(i18n.t('ERROR') + err)
+  }
+}
+
+/**
  * Validate Google reCAPTCHA v3 token.
  *
  * @async

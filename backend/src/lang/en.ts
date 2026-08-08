@@ -46,6 +46,10 @@ export const en = {
   FROM: 'From',
   MESSAGE: 'Message',
   LOCATION_IMAGE_NOT_FOUND: 'Location image not found',
+  NEWSLETTER_CONFIRM_SUBJECT: 'Please confirm your newsletter subscription',
+  NEWSLETTER_CONFIRM_INTRO: 'You have signed up for our newsletter.',
+  NEWSLETTER_CONFIRM_LINK: 'Please confirm your subscription using the following link:',
+  NEWSLETTER_CONFIRM_IGNORE: 'If you did not sign up, simply ignore this email. Without your confirmation you will not receive any newsletter.',
   NEW_CAR_NOTIFICATION_PART1: 'The supplier ',
   NEW_CAR_NOTIFICATION_PART2: ' created a new car.',
 }

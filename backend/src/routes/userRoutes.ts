@@ -36,6 +36,8 @@ routes.route(routeNames.changePassword).post(authJwt.verifyToken, userController
 routes.route(routeNames.checkPassword).get(authJwt.verifyToken, userController.checkPassword)
 routes.route(routeNames.getUsers).post(authJwt.verifyToken, authJwt.authSupplier, userController.getUsers)
 routes.route(routeNames.delete).post(authJwt.verifyToken, authJwt.authSupplier, userController.deleteUsers)
+routes.route(routeNames.deleteSelf).post(authJwt.verifyToken, userController.deleteSelf)
+routes.route(routeNames.exportSelf).get(authJwt.verifyToken, userController.exportSelf)
 routes.route(routeNames.verifyRecaptcha).post(userController.verifyRecaptcha)
 routes.route(routeNames.sendEmail).post(userController.sendEmail)
 routes.route(routeNames.hasPassword).get(authJwt.verifyToken, userController.hasPassword)

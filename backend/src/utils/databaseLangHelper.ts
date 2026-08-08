@@ -32,6 +32,8 @@ const syncLanguageValues = async <T extends { values: (mongoose.Types.ObjectId |
 
     const newValues: env.LocationValue[] = []
     const updates: { id: string; pushIds: string[] }[] = []
+    // Records that received an English placeholder, so they can be reported.
+    const untranslated: { id: string; value: string; languages: string[] }[] = []
 
     for (const doc of docs) {
       // Ensure English value exists to copy from
@@ -53,6 +55,11 @@ const syncLanguageValues = async <T extends { values: (mongoose.Types.ObjectId |
           additions.push(val._id.toString())
         }
         updates.push({ id: (doc._id as mongoose.Types.ObjectId).toString(), pushIds: additions })
+        untranslated.push({
+          id: (doc._id as mongoose.Types.ObjectId).toString(),
+          value: en.value,
+          languages: missingLangs,
+        })
       }
     }
 
@@ -104,6 +111,22 @@ const syncLanguageValues = async <T extends { values: (mongoose.Types.ObjectId |
         LocationValue.deleteMany({ _id: { $in: obsoleteIdsBatch } }),
       ])
       logger.info(`Cleaned up final batch of ${obsoleteIdsBatch.length} obsolete LocationValues in ${label}`)
+    }
+
+    // The placeholders above are copies of the English value, not translations.
+    // Report them explicitly so an admin knows what still needs translating
+    // instead of silently shipping English names in other languages.
+    if (untranslated.length > 0) {
+      logger.warn(
+        `${untranslated.length} ${label} still need translating; the English value was used as a placeholder:`,
+        untranslated
+          .slice(0, 50)
+          .map(({ id, value, languages }) => `${id} "${value}" -> ${languages.join(', ')}`)
+          .join(' | '),
+      )
+      if (untranslated.length > 50) {
+        logger.warn(`... and ${untranslated.length - 50} more ${label}`)
+      }
     }
 
     logger.info(`${label} initialized successfully`)

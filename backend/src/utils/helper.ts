@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import validator from 'validator'
 import Stripe from 'stripe'
 import { nanoid } from 'nanoid'
+import * as bookcarsTypes from ':bookcars-types'
 
 /**
  * Convert string to boolean.
@@ -268,3 +269,30 @@ export const days = (from?: Date, to?: Date) =>
  */
 export const validateLanguage = (lang: string) =>
   /^[a-z]{2}$/.test(lang)
+
+/**
+ * Split a gross price into its net and VAT parts.
+ *
+ * Mirrors `getVatBreakdown` in the shared bookcars-helper package. The logic is
+ * duplicated on purpose: the backend only aliases `:bookcars-types`, because
+ * bookcars-helper pulls in the browser-oriented currency-converter. Keep the
+ * two implementations in sync.
+ *
+ * @param {number} grossPrice price including VAT
+ * @param {number} vatRate VAT rate in percent, e.g. 19
+ * @returns {bookcarsTypes.VatBreakdown}
+ */
+export const getVatBreakdown = (grossPrice: number, vatRate: number): bookcarsTypes.VatBreakdown => {
+  const rate = Number.isFinite(vatRate) && vatRate > 0 ? vatRate : 0
+  const round = (value: number) => Math.round(value * 100) / 100
+
+  if (rate === 0) {
+    return { gross: round(grossPrice), net: round(grossPrice), vat: 0, rate: 0 }
+  }
+
+  const gross = round(grossPrice)
+  const net = round(gross / (1 + rate / 100))
+
+  // Derive VAT from the rounded net so that net + vat always equals gross.
+  return { gross, net, vat: round(gross - net), rate }
+}
