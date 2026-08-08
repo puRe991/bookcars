@@ -2,6 +2,12 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    START_DATE: 'Startdatum',
+    END_DATE: 'Enddatum',
+    DAILY_PRICE: 'Tagespreis',
+    NEW_DATE_BASED_PRICE: 'Neuer datumsabhängiger Preis',
+  },
   fr: {
     START_DATE: 'Date de début',
     END_DATE: 'Date de fin',

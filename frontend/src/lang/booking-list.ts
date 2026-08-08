@@ -2,6 +2,27 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    CAR: 'Fahrzeug',
+    SUPPLIER: 'Anbieter',
+    DRIVER: 'Fahrer',
+    PRICE: 'Preis',
+    STATUS: 'Status',
+    UPDATE_SELECTION: 'Auswahl bearbeiten',
+    DELETE_SELECTION: 'Auswahl löschen',
+    UPDATE_STATUS: 'Status ändern',
+    NEW_STATUS: 'Neuer Status',
+    DELETE_BOOKING: 'Möchten Sie diese Buchung wirklich löschen?',
+    DELETE_BOOKINGS: 'Möchten Sie die ausgewählten Buchungen wirklich löschen?',
+    EMPTY_LIST: 'Keine Buchungen.',
+    VIEW: 'Diese Buchung ansehen',
+    UPDATE: 'Diese Buchung bearbeiten',
+    DAYS: 'Tage',
+    COST: 'Kosten',
+    CANCEL: 'Diese Buchung stornieren',
+    CANCEL_BOOKING: 'Möchten Sie diese Buchung wirklich stornieren?',
+    CANCEL_BOOKING_REQUEST_SENT: 'Ihre Stornierungsanfrage wurde übermittelt. Wir melden uns bei Ihnen, um die Stornierung abzuschließen.',
+  },
   fr: {
     CAR: 'Voiture',
     SUPPLIER: 'Fournisseur',

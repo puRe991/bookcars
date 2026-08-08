@@ -2,6 +2,11 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    EMPTY_LIST: 'Keine Anbieter.',
+    VIEW_SUPPLIER: 'Anbieterprofil ansehen',
+    DELETE_SUPPLIER: 'Möchten Sie diesen Anbieter und alle zugehörigen Daten wirklich löschen?',
+  },
   fr: {
     EMPTY_LIST: 'Pas de fournisseurs.',
     VIEW_SUPPLIER: 'Voir le profil de ce fournisseur',

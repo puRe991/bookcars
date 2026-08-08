@@ -2,6 +2,15 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    NEW_LOCATION_HEADING: 'Neuer Standort',
+    LOCATION_NAME: 'Standort',
+    INVALID_LOCATION: 'Dieser Standort ist bereits vorhanden.',
+    LOCATION_CREATED: 'Standort erfolgreich angelegt.',
+    COUNTRY: 'Land',
+    PARKING_SPOTS: 'Parkplätze',
+    PARENT_LOCATION: 'Übergeordneter Standort',
+  },
   fr: {
     NEW_LOCATION_HEADING: 'Nouveau lieu',
     LOCATION_NAME: 'Lieu',

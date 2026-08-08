@@ -3,6 +3,67 @@ import * as langHelper from '@/utils/langHelper'
 import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
+  de: {
+    TITLE: 'Nutzungsbedingungen',
+    TOS: `
+Willkommen bei ${env.WEBSITE_NAME}! Mit dem Zugriff auf unsere Website und der Nutzung unserer Dienste erklären Sie sich mit den nachfolgenden Nutzungsbedingungen einverstanden. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie unsere Dienste bitte nicht.
+
+
+1. Geltung der Bedingungen
+
+Mit dem Zugriff auf unsere Dienste oder deren Nutzung bestätigen Sie, dass Sie diese Nutzungsbedingungen und unsere Datenschutzerklärung gelesen und verstanden haben und ihnen zustimmen.
+
+
+2. Nutzung unserer Dienste
+
+Sie verpflichten sich, unsere Dienste ausschließlich zu rechtmäßigen Zwecken und in einer Weise zu nutzen, die die Rechte Dritter nicht verletzt und deren Nutzung unserer Dienste nicht einschränkt oder beeinträchtigt. Dies umfasst die Einhaltung aller anwendbaren Gesetze und Vorschriften.
+
+
+3. Buchungen und Zahlungen
+
+Wenn Sie eine Buchung bei ${env.WEBSITE_NAME} vornehmen, verpflichten Sie sich, vollständige und zutreffende Angaben zu machen. Alle Zahlungen erfolgen über unser gesichertes Zahlungssystem. Nach Abschluss der Zahlung erhalten Sie eine Bestätigung Ihrer Buchung.
+
+
+4. Stornierungsbedingungen
+
+Stornierungen, die mehr als 24 Stunden vor Mietbeginn erfolgen, können vollständig erstattet werden. Bei Stornierungen weniger als 24 Stunden vor Mietbeginn kann eine Stornogebühr anfallen. Einzelheiten entnehmen Sie bitte unseren Stornierungsbedingungen.
+
+
+5. Mietbedingungen
+
+Für alle Anmietungen gelten unsere Mietbedingungen, die unter anderem Altersgrenzen, Anforderungen an den Führerschein und Versicherungspflichten umfassen. Sie sind dafür verantwortlich, vor einer Buchung sicherzustellen, dass Sie alle Voraussetzungen erfüllen.
+
+
+6. Haftungsbeschränkung
+
+${env.WEBSITE_NAME} haftet nicht für mittelbare Schäden, Begleitschäden oder Folgeschäden, die aus der Nutzung unserer Dienste entstehen. Die Haftung für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie bei Vorsatz und grober Fahrlässigkeit bleibt unberührt. Im Übrigen ist die Haftung auf den für die Dienste gezahlten Betrag begrenzt.
+
+
+7. Widerrufsrecht
+
+Verbraucherinnen und Verbrauchern steht bei Verträgen im Fernabsatz grundsätzlich ein gesetzliches Widerrufsrecht zu. Bei Verträgen über die Vermietung von Fahrzeugen zu einem bestimmten Termin oder Zeitraum ist das Widerrufsrecht nach § 312g Abs. 2 Nr. 9 BGB ausgeschlossen. Es gelten die vereinbarten Stornierungsbedingungen.
+
+
+8. Änderungen der Bedingungen
+
+Wir behalten uns vor, diese Nutzungsbedingungen jederzeit zu ändern. Änderungen werden mit ihrer Veröffentlichung auf unserer Website wirksam. Die fortgesetzte Nutzung unserer Dienste nach einer Änderung gilt als Zustimmung zu den geänderten Bedingungen.
+
+
+9. Anwendbares Recht und Streitbeilegung
+
+Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+
+
+10. Kontakt
+
+Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter ${env.CONTACT_EMAIL}. Wir helfen Ihnen bei allen Anliegen rund um unsere Dienste gern weiter.
+
+
+11. Hinweis
+
+Mit der Nutzung unserer Dienste bestätigen Sie, dass Sie diese Nutzungsbedingungen gelesen und verstanden haben und an sie gebunden sind.
+    `,
+  },
   fr: {
     TITLE: "Conditions d'utilisation",
     TOS: `

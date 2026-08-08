@@ -32,6 +32,10 @@ import {
  */
 export const LANGUAGES = [
   {
+    code: 'de',
+    label: 'Deutsch',
+  },
+  {
     code: 'fr',
     label: 'Français',
   },
@@ -55,12 +59,12 @@ type Currency = { code: string, symbol: string }
  */
 export const CURRENCIES: Currency[] = [
   {
-    code: 'USD',
-    symbol: '$',
-  },
-  {
     code: 'EUR',
     symbol: '€',
+  },
+  {
+    code: 'USD',
+    symbol: '$',
   },
   {
     code: 'GBP',
@@ -115,11 +119,11 @@ export const AXIOS_RETRIES: number = 3
 export const AXIOS_RETRIES_INTERVAL: number = 500 // in milliseconds
 
 /**
- * Default language. Default is English.
+ * Default language. Default is German.
  *
  * @type {string}
  */
-export const DEFAULT_LANGUAGE: string = BC_DEFAULT_LANGUAGE || 'en'
+export const DEFAULT_LANGUAGE: string = BC_DEFAULT_LANGUAGE || 'de'
 
 /**
  * Page size. Default is 20.
@@ -234,11 +238,11 @@ export const STRIPE_MERCHANT_IDENTIFIER: string = BC_STRIPE_MERCHANT_IDENTIFIER
 export const STRIPE_COUNTRY_CODE: string = BC_STRIPE_COUNTRY_CODE
 
 /**
- * The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR" base currency. Default is USD.
+ * The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR" base currency. Default is EUR.
  *
  * @type {string}
  */
-export const BASE_CURRENCY: string = BC_BASE_CURRENCY || 'USD'
+export const BASE_CURRENCY: string = BC_BASE_CURRENCY || 'EUR'
 
 /**
  * Deposit filter first value.

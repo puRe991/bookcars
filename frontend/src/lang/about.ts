@@ -3,6 +3,15 @@ import * as langHelper from '@/utils/langHelper'
 import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
+  de: {
+    TITLE1: `${env.WEBSITE_NAME} - Ihr Autovermietung-Service`,
+    SUBTITLE1: 'Ihr zuverlässiger Partner für Mietwagen',
+    CONTENT1: `Bei ${env.WEBSITE_NAME} wissen wir, dass jede Reise einzigartig ist. Wir bieten unseren Kundinnen und Kunden eine vielfältige Fahrzeugauswahl für jeden Reisebedarf. Ob Sie eine Stadt erkunden, geschäftlich unterwegs sind oder Abenteuer suchen – unsere zuverlässigen Mietwagenangebote sorgen für einen reibungslosen Start. Unser Anspruch ist ein herausragender Kundenservice, der Ihre Anmietung angenehm und stressfrei macht. Mit fairen Preisen, einer breiten Auswahl gepflegter Fahrzeuge und einem engagierten Team an Ihrer Seite möchten wir Ihr verlässlicher Partner auf der Straße sein. Wählen Sie ${env.WEBSITE_NAME} für Ihre Mietwagenbedürfnisse und genießen Sie die Freiheit, in Ihrem eigenen Tempo unterwegs zu sein.`,
+    TITLE2: `Warum ${env.WEBSITE_NAME}`,
+    SUBTITLE2: 'Erstklassiger Service auf jeder Fahrt',
+    CONTENT2: 'Profitieren Sie von Komfort, Zuverlässigkeit und einem hervorragenden Preis-Leistungs-Verhältnis. Von der unkomplizierten Buchung bis zum hochwertigen Fahrzeug sind wir Ihr verlässlicher Reisepartner.',
+    FIND_DEAL: 'Angebot finden',
+  },
   fr: {
     TITLE1: `${env.WEBSITE_NAME} - Votre service de location de voitures`,
     SUBTITLE1: 'Votre partenaire de confiance pour la location de voitures',

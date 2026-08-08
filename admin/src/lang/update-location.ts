@@ -2,6 +2,10 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    UPDATE_LOCATION: 'Standort bearbeiten',
+    LOCATION_UPDATED: 'Standort erfolgreich aktualisiert.',
+  },
   fr: {
     UPDATE_LOCATION: 'Modification du lieu',
     LOCATION_UPDATED: 'Lieu modifié avec succès.',

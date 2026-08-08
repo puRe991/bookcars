@@ -2,6 +2,20 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    TITLE: 'Preismodelle',
+    FREE_PLAN: 'Kostenloser Tarif',
+    FREE_PLAN_PRICE: 'Kostenlos',
+    FEATURE_1: 'Unbegrenzt viele Fahrzeuge anlegen',
+    FEATURE_2: '1 Fahrzeug in den Suchergebnissen',
+    BASIC_PLAN: 'Basis-Tarif',
+    BASIC_PLAN_PRICE: '10 €/Monat',
+    FEATURE_3: '5 Fahrzeuge in den Suchergebnissen',
+    FEATURE_4: 'Bevorzugter Support',
+    PREMIUM_PLAN: 'Premium-Tarif',
+    CONTACT_US: 'Kontakt aufnehmen',
+    FEATURE_5: 'Unbegrenzt viele Fahrzeuge in den Suchergebnissen',
+  },
   fr: {
     TITLE: 'Plans tarifaires',
     FREE_PLAN: 'Plan gratuit',

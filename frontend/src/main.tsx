@@ -4,9 +4,9 @@ import { ToastContainer } from 'react-toastify'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 
-import { frFR as corefrFR, enUS as coreenUS, esES as coresES } from '@mui/material/locale'
-import { frFR, enUS, esES } from '@mui/x-date-pickers/locales'
-import { frFR as dataGridfrFR, enUS as dataGridenUS, esES as dataGridesEs } from '@mui/x-data-grid/locales'
+import { deDE as coredeDE, frFR as corefrFR, enUS as coreenUS, esES as coresES } from '@mui/material/locale'
+import { deDE, frFR, enUS, esES } from '@mui/x-date-pickers/locales'
+import { deDE as dataGriddeDE, frFR as dataGridfrFR, enUS as dataGridenUS, esES as dataGridesEs } from '@mui/x-data-grid/locales'
 import { disableDevTools } from ':disable-react-devtools'
 import * as helper from '@/utils/helper'
 import * as UserService from '@/services/UserService'
@@ -156,7 +156,9 @@ if (lang) {
   if (env.SET_LANGUAGE_FROM_IP && !storedLang) {
     const country = await IpInfoService.getCountryCode()
 
-    if (['FR', 'MA'].includes(country)) {
+    if (['DE', 'AT', 'CH', 'LI', 'LU'].includes(country)) {
+      updateLang('de')
+    } else if (['FR', 'MA'].includes(country)) {
       updateLang('fr')
     } else if (['US', 'GB', 'AU'].includes(country)) {
       updateLang('en')
@@ -167,6 +169,7 @@ if (lang) {
 }
 
 language = UserService.getLanguage()
+const isDe = language === 'de'
 const isFr = language === 'fr'
 const isEs = language === 'es'
 
@@ -251,9 +254,9 @@ const theme = createTheme(
       },
     },
   },
-  isFr ? frFR : isEs ? esES : enUS,
-  isFr ? dataGridfrFR : isEs ? dataGridesEs : dataGridenUS,
-  isFr ? corefrFR : isEs ? coresES : coreenUS,
+  isDe ? deDE : isFr ? frFR : isEs ? esES : enUS,
+  isDe ? dataGriddeDE : isFr ? dataGridfrFR : isEs ? dataGridesEs : dataGridenUS,
+  isDe ? coredeDE : isFr ? corefrFR : isEs ? coresES : coreenUS,
 )
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

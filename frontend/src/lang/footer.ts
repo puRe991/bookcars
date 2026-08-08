@@ -5,6 +5,22 @@ import env from '@/config/env.config'
 const COPYRIGHT_PART1 = `Copyright © ${new Date().getFullYear()} ${env.WEBSITE_NAME}`
 
 const strings = new LocalizedStrings({
+  de: {
+    COPYRIGHT_PART1,
+    COPYRIGHT_PART2: '. Alle Rechte vorbehalten.',
+    CORPORATE: 'Unternehmen',
+    ABOUT: 'Über uns',
+    TOS: 'Nutzungsbedingungen',
+    RENT: 'Auto mieten',
+    SUPPLIERS: 'Anbieter',
+    LOCATIONS: 'Standorte',
+    SUPPORT: 'Support',
+    CONTACT: 'Kontakt',
+    SECURE_PAYMENT: `100 % sichere Zahlung mit ${env.WEBSITE_NAME}`,
+    PRIVACY_POLICY: 'Datenschutzerklärung',
+    FAQ: 'Häufige Fragen',
+    COOKIE_POLICY: 'Cookie-Richtlinie',
+  },
   fr: {
     COPYRIGHT_PART1,
     COPYRIGHT_PART2: '. Tous droits réservés.',

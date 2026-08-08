@@ -2,6 +2,11 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SETTINGS_UPDATED: 'Einstellungen erfolgreich aktualisiert.',
+    NETWORK_SETTINGS: 'Netzwerkeinstellungen',
+    SETTINGS_EMAIL_NOTIFICATIONS: 'E-Mail-Benachrichtigungen aktivieren',
+  },
   fr: {
     SETTINGS_UPDATED: 'Paramètres modifiés avec succès.',
     NETWORK_SETTINGS: 'Paramètres Réseau',

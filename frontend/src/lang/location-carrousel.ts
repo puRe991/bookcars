@@ -2,6 +2,11 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SELECT_LOCATION: 'Standort wählen',
+    AVALIABLE_LOCATION: 'verfügbarer Standort',
+    AVALIABLE_LOCATIONS: 'verfügbare Standorte',
+  },
   fr: {
     SELECT_LOCATION: 'Choisir ce lieu',
     AVALIABLE_LOCATION: 'lieu disponible',

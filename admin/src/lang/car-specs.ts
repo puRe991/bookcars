@@ -2,6 +2,12 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    CAR_SPECS: 'Fahrzeugdaten',
+    AIRCON: 'Klimaanlage',
+    MORE_THAN_FOOR_DOORS: '4+ Türen',
+    MORE_THAN_FIVE_SEATS: '5+ Sitzplätze',
+  },
   fr: {
     CAR_SPECS: 'Spécificités du véhicule',
     AIRCON: 'Climatisation',

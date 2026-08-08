@@ -2,6 +2,10 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    REQUIRED_FIELD: 'Bitte füllen Sie das Feld aus: ',
+    REQUIRED_FIELDS: 'Bitte füllen Sie die Felder aus: ',
+  },
   fr: {
     REQUIRED_FIELD: 'Veuillez renseigner le champ : ',
     REQUIRED_FIELDS: 'Veuillez renseigner les champs : ',

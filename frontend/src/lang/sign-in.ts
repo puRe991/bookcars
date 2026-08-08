@@ -2,6 +2,14 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SIGN_IN_HEADING: 'Anmelden',
+    SIGN_IN: 'Anmelden',
+    ERROR_IN_SIGN_IN: 'E-Mail-Adresse oder Passwort ist falsch.',
+    IS_BLACKLISTED: 'Ihr Konto ist gesperrt.',
+    RESET_PASSWORD: 'Passwort vergessen?',
+    STAY_CONNECTED: 'Angemeldet bleiben',
+  },
   fr: {
     SIGN_IN_HEADING: 'Connexion',
     SIGN_IN: 'Se connecter',

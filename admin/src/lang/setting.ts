@@ -2,6 +2,13 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    SETTINGS: 'Miet-Einstellungen',
+    MIN_PICKUP_HOURS: 'Mindestvorlauf in Stunden vor der Abholung',
+    MIN_RENTAL_HOURS: 'Mindestmietdauer in Stunden zwischen Abholung und Rückgabe',
+    MIN_PICKUP_DROPOFF_HOUR: 'Frühestmögliche Uhrzeit für Abholung und Rückgabe (z. B. 9 für 09:00 Uhr)',
+    MAX_PICKUP_DROPOFF_HOUR: 'Spätestmögliche Uhrzeit für Abholung und Rückgabe (z. B. 19 für 19:00 Uhr)',
+  },
   fr: {
     SETTINGS: 'Paramètres de location',
     MIN_PICKUP_HOURS: 'Délai minimum requis en heures avant le retrait',

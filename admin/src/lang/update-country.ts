@@ -2,6 +2,10 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    UPDATE_COUNTRY: 'Land bearbeiten',
+    COUNTRY_UPDATED: 'Land erfolgreich aktualisiert.',
+  },
   fr: {
     UPDATE_COUNTRY: 'Modification du pays',
     COUNTRY_UPDATED: 'Pays modifié avec succès.',

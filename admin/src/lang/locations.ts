@@ -2,6 +2,14 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    NEW_LOCATION: 'Neuer Standort',
+    DELETE_LOCATION: 'Möchten Sie diesen Standort wirklich löschen?',
+    CANNOT_DELETE_LOCATION: 'Dieser Standort kann nicht gelöscht werden, da ihm untergeordnete Standorte oder Fahrzeuge zugeordnet sind.',
+    EMPTY_LIST: 'Keine Standorte.',
+    LOCATION: 'Standort',
+    LOCATIONS: 'Standorte',
+  },
   fr: {
     NEW_LOCATION: 'Nouveau lieu',
     DELETE_LOCATION: 'Êtes-vous sûr de vouloir supprimer ce lieu ?',

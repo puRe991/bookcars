@@ -2,6 +2,13 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    CONTACT_HEADING: 'Kontakt',
+    SUBJECT: 'Betreff',
+    MESSAGE: 'Nachricht',
+    SEND: 'Senden',
+    MESSAGE_SENT: 'Nachricht gesendet'
+  },
   fr: {
     CONTACT_HEADING: 'Contact',
     SUBJECT: 'Objet',

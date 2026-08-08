@@ -3,6 +3,12 @@ import env from '@/config/env.config'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    CREATE_SUPPLIER_HEADING: 'Neuer Anbieter',
+    INVALID_SUPPLIER_NAME: 'Dieser Anbieter ist bereits vorhanden.',
+    SUPPLIER_IMAGE_SIZE_ERROR: `Das Bild muss das Format ${env.SUPPLIER_IMAGE_WIDTH}x${env.SUPPLIER_IMAGE_HEIGHT} haben`,
+    RECOMMENDED_IMAGE_SIZE: `Empfohlene Bildgröße: ${env.SUPPLIER_IMAGE_WIDTH}x${env.SUPPLIER_IMAGE_HEIGHT}`,
+  },
   fr: {
     CREATE_SUPPLIER_HEADING: 'Nouveau fournisseur',
     INVALID_SUPPLIER_NAME: 'Ce fournisseur existe déjà.',

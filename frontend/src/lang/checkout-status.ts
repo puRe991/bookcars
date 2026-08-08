@@ -3,6 +3,14 @@ import * as langHelper from '@/utils/langHelper'
 import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
+  de: {
+    CONGRATULATIONS: 'Herzlichen Glückwunsch!',
+    SUCCESS: 'Ihre Zahlung wurde erfolgreich durchgeführt. Wir haben Ihnen eine Bestätigungs-E-Mail gesendet.',
+    SUCCESS_PAY_LATER: 'Ihre Buchung war erfolgreich. Wir haben Ihnen eine Bestätigungs-E-Mail gesendet.',
+    ERROR: 'Etwas ist schiefgelaufen! Bitte versuchen Sie es später erneut',
+    STATUS_TITLE: `${env.WEBSITE_NAME} Buchungsbestätigung`,
+    STATUS_MESSAGE: 'Prüfen Sie Ihr Postfach und folgen Sie den Schritten in der Bestätigungs-E-Mail, um Ihr Fahrzeug zu buchen.',
+  },
   fr: {
     CONGRATULATIONS: 'Félicitation!',
     SUCCESS: 'Votre paiement a été effectué avec succès. Nous vous avons envoyé un e-mail de confirmation.',

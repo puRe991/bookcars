@@ -7,6 +7,10 @@ import Const from './const'
 //
 const LANGUAGES = [
   {
+    code: 'de',
+    label: 'Deutsch',
+  },
+  {
     code: 'en',
     label: 'English',
   },
@@ -30,7 +34,7 @@ const env = {
   API_HOST: String(import.meta.env.VITE_BC_API_HOST),
   LANGUAGES: LANGUAGES.map((l) => l.code),
   _LANGUAGES: LANGUAGES,
-  DEFAULT_LANGUAGE: String(import.meta.env.VITE_BC_DEFAULT_LANGUAGE || 'en'),
+  DEFAULT_LANGUAGE: String(import.meta.env.VITE_BC_DEFAULT_LANGUAGE || 'de'),
   PAGE_SIZE: Number.parseInt(String(import.meta.env.VITE_BC_PAGE_SIZE), 10) || 30,
   CARS_PAGE_SIZE: Number.parseInt(String(import.meta.env.VITE_BC_CARS_PAGE_SIZE), 10) || 15,
   BOOKINGS_PAGE_SIZE: Number.parseInt(String(import.meta.env.VITE_BC_BOOKINGS_PAGE_SIZE), 10) || 20,
@@ -62,7 +66,7 @@ const env = {
     (import.meta.env.VITE_BC_PAGINATION_MODE && import.meta.env.VITE_BC_PAGINATION_MODE.toUpperCase()) === Const.PAGINATION_MODE.INFINITE_SCROLL
       ? Const.PAGINATION_MODE.INFINITE_SCROLL
       : Const.PAGINATION_MODE.CLASSIC,
-  CURRENCY: import.meta.env.VITE_BC_CURRENCY || '$',
+  CURRENCY: import.meta.env.VITE_BC_CURRENCY || '€',
   DEPOSIT_FILTER_VALUE_1: Number.parseInt(String(import.meta.env.VITE_BC_DEPOSIT_FILTER_VALUE_1), 10),
   DEPOSIT_FILTER_VALUE_2: Number.parseInt(String(import.meta.env.VITE_BC_DEPOSIT_FILTER_VALUE_2), 10),
   DEPOSIT_FILTER_VALUE_3: Number.parseInt(String(import.meta.env.VITE_BC_DEPOSIT_FILTER_VALUE_3), 10),

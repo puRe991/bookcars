@@ -2,6 +2,10 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    PICK_UP_LOCATION: 'Abholort',
+    DROP_OFF_LOCATION: 'Rückgabeort',
+  },
   fr: {
     PICK_UP_LOCATION: 'Lieu de prise en charge',
     DROP_OFF_LOCATION: 'Lieu de restitution',

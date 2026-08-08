@@ -2,6 +2,12 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    NEW_COUNTRY_HEADING: 'Neues Land',
+    COUNTRY_NAME: 'Land',
+    INVALID_COUNTRY: 'Dieses Land ist bereits vorhanden.',
+    COUNTRY_CREATED: 'Land erfolgreich angelegt.',
+  },
   fr: {
     NEW_COUNTRY_HEADING: 'Nouveau pays',
     COUNTRY_NAME: 'Pays',

@@ -2,6 +2,9 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    NEW_BOOKING_HEADING: 'Neue Buchung',
+  },
   fr: {
     NEW_BOOKING_HEADING: 'Nouvelle réservation',
   },

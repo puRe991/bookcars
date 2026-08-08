@@ -2,6 +2,24 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    DASHBOARD: 'Übersicht',
+    SCHEDULER: 'Fahrzeugplaner',
+    HOME: 'Startseite',
+    COMPANIES: 'Anbieter',
+    LOCATIONS: 'Standorte',
+    CARS: 'Fahrzeuge',
+    USERS: 'Benutzer',
+    ABOUT: 'Über uns',
+    TOS: 'Nutzungsbedingungen',
+    CONTACT: 'Kontakt',
+    LANGUAGE: 'Sprache',
+    SETTINGS: 'Einstellungen',
+    SIGN_OUT: 'Abmelden',
+    COUNTRIES: 'Länder',
+    BANK_DETAILS: 'Bankverbindung',
+    PRICING: 'Preise',
+  },
   fr: {
     DASHBOARD: 'Tableau de bord',
     SCHEDULER: 'Planificateur',

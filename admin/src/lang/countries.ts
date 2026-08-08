@@ -2,6 +2,14 @@ import LocalizedStrings from 'localized-strings'
 import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
+  de: {
+    NEW_COUNTRY: 'Neues Land',
+    DELETE_COUNTRY: 'Möchten Sie dieses Land wirklich löschen?',
+    CANNOT_DELETE_COUNTRY: 'Dieses Land kann nicht gelöscht werden, da ihm Standorte zugeordnet sind.',
+    EMPTY_LIST: 'Keine Länder.',
+    COUNTRY: 'Land',
+    COUNTRIES: 'Länder',
+  },
   fr: {
     NEW_COUNTRY: 'Nouveau pays',
     DELETE_COUNTRY: 'Êtes-vous sûr de vouloir supprimer ce pays ?',
