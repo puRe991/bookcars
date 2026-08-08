@@ -7,6 +7,7 @@ import { format, intervalToDuration } from 'date-fns'
 import { enUS, de, fr, es } from 'date-fns/locale'
 import { PaymentSheetError, initPaymentSheet, useStripe } from '@stripe/stripe-react-native'
 import { useIsFocused } from '@react-navigation/native'
+import * as Linking from 'expo-linking'
 
 import * as bookcarsTypes from ':bookcars-types'
 import * as bookcarsHelper from ':bookcars-helper'
@@ -713,7 +714,9 @@ const CheckoutScreen = () => {
             const { error: initPaymentSheetError } = await initPaymentSheet({
               customerId,
               paymentIntentClientSecret: clientSecret,
-              merchantDisplayName: 'BookCars',
+              merchantDisplayName: env.WEBSITE_NAME,
+              // Required for redirect-based methods such as SEPA, Klarna and giropay.
+              returnURL: Linking.createURL('stripe-redirect'),
               googlePay: {
                 merchantCountryCode: env.STRIPE_COUNTRY_CODE.toUpperCase(),
                 testEnv: env.STRIPE_PUBLISHABLE_KEY.includes('_test_'),

@@ -162,7 +162,7 @@ export const de = {
   CARD_NUMBER_NOT_VALID: 'Ungültige Kartennummer',
   CVV: 'Kartenprüfnummer',
   CVV_NOT_VALID: 'Ungültige Kartenprüfnummer',
-  BOOK_NOW: 'Jetzt buchen',
+  BOOK_NOW: 'Zahlungspflichtig buchen',
   SECURE_PAYMENT_INFO: 'Ihre Daten werden durch eine SSL-gesicherte Zahlung geschützt.',
   CARD_DATE_ERROR: 'Ungültiges Kartendatum.',
   BOOKING_SUCCESS: 'Ihre Zahlung wurde erfolgreich durchgeführt. Wir haben Ihnen eine Bestätigungs-E-Mail gesendet.',

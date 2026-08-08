@@ -1,0 +1,76 @@
+div.impressum {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  transform: translate3d(0, 0, 0);
+  padding: 50px 20%;
+  font-size: 15px;
+  color: #121212;
+  min-height: 100vh;
+}
+
+div.impressum h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+div.impressum h2 {
+  font-size: 18px;
+  margin: 28px 0 10px;
+}
+
+div.impressum section p {
+  margin: 4px 0;
+}
+
+div.impressum p.company-name {
+  font-weight: 600;
+}
+
+div.impressum p.company-address,
+div.impressum p.dispute {
+  white-space: pre-wrap;
+}
+
+div.impressum dl {
+  display: grid;
+  grid-template-columns: minmax(180px, max-content) 1fr;
+  gap: 8px 24px;
+  margin: 0;
+}
+
+div.impressum dt {
+  font-weight: 600;
+}
+
+div.impressum dd {
+  margin: 0;
+}
+
+div.impressum .value.missing {
+  color: #b3261e;
+  font-style: italic;
+}
+
+div.impressum .impressum-warning {
+  border-left: 4px solid #b3261e;
+  background: #fdecea;
+  color: #7f1d1a;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+@media only screen and (width <=960px) {
+  div.impressum {
+    padding: 30px 20px;
+  }
+
+  div.impressum dl {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  div.impressum dd {
+    margin-bottom: 12px;
+  }
+}

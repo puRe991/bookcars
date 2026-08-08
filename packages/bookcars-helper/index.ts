@@ -2,7 +2,23 @@ import * as bookcarsTypes from ':bookcars-types'
 import CurrencyConverter, { currencies } from ':currency-converter'
 
 /**
+ * BCP 47 locales used for number formatting, keyed by ISO 639-1 language code.
+ * Each locale brings its own group and decimal separators, e.g. German formats
+ * 1234.5 as "1.234,50" while English formats it as "1,234.50".
+ */
+const NUMBER_FORMAT_LOCALES: Record<string, string> = {
+  de: 'de-DE',
+  en: 'en-US',
+  es: 'es-ES',
+  fr: 'fr-FR',
+}
+
+const DEFAULT_NUMBER_FORMAT_LOCALE = NUMBER_FORMAT_LOCALES.en
+
+/**
  * Format a number.
+ *
+ * Whole numbers are rendered without decimals, fractional ones with exactly two.
  *
  * @export
  * @param {number} x
@@ -10,10 +26,13 @@ import CurrencyConverter, { currencies } from ':currency-converter'
  * @returns {string}
  */
 export const formatNumber = (x: number, language: string): string => {
-  const parts: string[] = String(x % 1 !== 0 ? x.toFixed(2) : x).split('.')
-  const separator = language === 'en' ? ',' : ' '
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator)
-  return parts.join('.')
+  const locale = NUMBER_FORMAT_LOCALES[language] || DEFAULT_NUMBER_FORMAT_LOCALE
+  const fractionDigits = x % 1 !== 0 ? 2 : 0
+
+  return new Intl.NumberFormat(locale, {
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  }).format(x)
 }
 
 /**

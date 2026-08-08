@@ -124,6 +124,22 @@ const env = {
   GOOGLE_ANALYTICS_ENABLED: (import.meta.env.VITE_BC_GOOGLE_ANALYTICS_ENABLED && import.meta.env.VITE_BC_GOOGLE_ANALYTICS_ENABLED.toLowerCase()) === 'true',
   GOOGLE_ANALYTICS_ID: String(import.meta.env.VITE_BC_GOOGLE_ANALYTICS_ID),
   CONTACT_EMAIL: import.meta.env.VITE_BC_CONTACT_EMAIL,
+  /**
+   * Operator identity shown in the Impressum (legal notice).
+   * Required for commercial sites in Germany (§ 5 DDG, § 18 Abs. 2 MStV).
+   * Any value left empty is flagged as missing on the Impressum page.
+   */
+  COMPANY: {
+    NAME: String(import.meta.env.VITE_BC_COMPANY_NAME || ''),
+    ADDRESS: String(import.meta.env.VITE_BC_COMPANY_ADDRESS || ''),
+    REPRESENTATIVE: String(import.meta.env.VITE_BC_COMPANY_REPRESENTATIVE || ''),
+    PHONE: String(import.meta.env.VITE_BC_COMPANY_PHONE || ''),
+    REGISTER_COURT: String(import.meta.env.VITE_BC_COMPANY_REGISTER_COURT || ''),
+    REGISTER_NUMBER: String(import.meta.env.VITE_BC_COMPANY_REGISTER_NUMBER || ''),
+    VAT_ID: String(import.meta.env.VITE_BC_COMPANY_VAT_ID || ''),
+    SUPERVISORY_AUTHORITY: String(import.meta.env.VITE_BC_COMPANY_SUPERVISORY_AUTHORITY || ''),
+    CONTENT_RESPONSIBLE: String(import.meta.env.VITE_BC_COMPANY_CONTENT_RESPONSIBLE || ''),
+  },
   DEPOSIT_FILTER_VALUE_1: Number.parseInt(String(import.meta.env.VITE_BC_DEPOSIT_FILTER_VALUE_1), 10),
   DEPOSIT_FILTER_VALUE_2: Number.parseInt(String(import.meta.env.VITE_BC_DEPOSIT_FILTER_VALUE_2), 10),
   DEPOSIT_FILTER_VALUE_3: Number.parseInt(String(import.meta.env.VITE_BC_DEPOSIT_FILTER_VALUE_3), 10),

@@ -7,12 +7,35 @@ import { RecaptchaProvider } from '@/context/RecaptchaContext'
 import { PayPalProvider } from '@/context/PayPalContext'
 import { SettingProvider } from '@/context/SettingContext'
 import { init as initGA } from '@/utils/ga4'
+import { analyticsAllowed, onConsentChange } from '@/utils/cookieConsent'
 import ScrollToTop from '@/components/ScrollToTop'
 import NProgressIndicator from '@/components/NProgressIndicator'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import CookieConsent from '@/components/CookieConsent'
 
-if (env.GOOGLE_ANALYTICS_ENABLED) {
-  initGA()
+/**
+ * Loads Google Analytics only once the visitor has opted in (§ 25 TTDSG).
+ * Analytics must never be initialised at module load.
+ */
+const AnalyticsGate = () => {
+  useEffect(() => {
+    if (!env.GOOGLE_ANALYTICS_ENABLED) {
+      return undefined
+    }
+
+    let started = false
+    const start = () => {
+      if (!started && analyticsAllowed()) {
+        started = true
+        initGA()
+      }
+    }
+
+    start()
+    return onConsentChange(start)
+  }, [])
+
+  return null
 }
 
 const Header = lazy(() => import('@/components/Header'))
@@ -39,6 +62,8 @@ const Locations = lazy(() => import('@/pages/Locations'))
 const Suppliers = lazy(() => import('@/pages/Suppliers'))
 const Faq = lazy(() => import('@/pages/Faq'))
 const CookiePolicy = lazy(() => import('@/pages/CookiePolicy'))
+const Impressum = lazy(() => import('@/pages/Impressum'))
+const Withdrawal = lazy(() => import('@/pages/Withdrawal'))
 
 const AppLayout = () => {
   const location = useLocation()
@@ -56,12 +81,14 @@ const AppLayout = () => {
             <RecaptchaProvider>
               <PayPalProvider>
                 <ScrollToTop />
+                <AnalyticsGate />
                 <div className="app">
                   <Suspense fallback={<NProgressIndicator />}>
                     <Header />
                     <Outlet />
                   </Suspense>
                 </div>
+                <CookieConsent />
               </PayPalProvider>
             </RecaptchaProvider>
           </NotificationProvider>
@@ -97,6 +124,10 @@ const router = createBrowserRouter([
       { path: 'locations', element: <Locations /> },
       { path: 'faq', element: <Faq /> },
       { path: 'cookie-policy', element: <CookiePolicy /> },
+      { path: 'impressum', element: <Impressum /> },
+      { path: 'imprint', element: <Impressum /> },
+      { path: 'widerruf', element: <Withdrawal /> },
+      { path: 'withdrawal', element: <Withdrawal /> },
       ...(env.HIDE_SUPPLIERS ? [] : [{ path: 'suppliers', element: <Suppliers /> }]),
       { path: '*', element: <NoMatch /> }
     ]

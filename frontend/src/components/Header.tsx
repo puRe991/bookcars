@@ -33,6 +33,8 @@ import {
   QuestionAnswer as FaqIcon,
   PersonOutline as SignUpIcon,
   Cookie as CookiePolicyIcon,
+  Gavel as ImpressumIcon,
+  Undo as WithdrawalIcon,
 } from '@mui/icons-material'
 import { toast } from 'react-toastify'
 import { CircleFlag } from 'react-circle-flags'
@@ -427,6 +429,24 @@ const Header = ({
                 >
                   <ListItemIcon><TosIcon /></ListItemIcon>
                   <ListItemText primary={strings.TOS} />
+                </ListItem>
+                <ListItem
+                  onClick={() => {
+                    navigate('/widerruf')
+                    handleSideMenuClose()
+                  }}
+                >
+                  <ListItemIcon><WithdrawalIcon /></ListItemIcon>
+                  <ListItemText primary={strings.WITHDRAWAL} />
+                </ListItem>
+                <ListItem
+                  onClick={() => {
+                    navigate('/impressum')
+                    handleSideMenuClose()
+                  }}
+                >
+                  <ListItemIcon><ImpressumIcon /></ListItemIcon>
+                  <ListItemText primary={strings.IMPRESSUM} />
                 </ListItem>
                 <ListItem
                   onClick={() => {

@@ -246,7 +246,13 @@ export const createPaymentIntent = async (req: Request, res: Response) => {
       customer: customer.id,
       automatic_payment_methods: {
         enabled: true,
-        allow_redirects: 'never',
+        //
+        // Redirect-based methods must be allowed for the German market: SEPA
+        // Direct Debit, Klarna and giropay all redirect, and card penetration
+        // in Germany is low. The mobile PaymentSheet passes a returnURL so it
+        // can be brought back into the app after the redirect.
+        //
+        allow_redirects: 'always',
       },
     })
 

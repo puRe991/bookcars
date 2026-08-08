@@ -33,6 +33,8 @@ const Footer = () => {
             <li onClick={() => navigate('/cookie-policy')}>{strings.COOKIE_POLICY}</li>
             <li onClick={() => navigate('/privacy')}>{strings.PRIVACY_POLICY}</li>
             <li onClick={() => navigate('/tos')}>{strings.TOS}</li>
+            <li onClick={() => navigate('/widerruf')}>{strings.WITHDRAWAL}</li>
+            <li onClick={() => navigate('/impressum')}>{strings.IMPRESSUM}</li>
           </ul>
         </div>
         <div className="main-section">

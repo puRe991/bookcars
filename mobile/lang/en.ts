@@ -161,7 +161,7 @@ export const en = {
   CARD_NUMBER_NOT_VALID: 'Invalid card number',
   CVV: 'Card Validation Code',
   CVV_NOT_VALID: 'Invalid Card Validation Code',
-  BOOK_NOW: 'Book now',
+  BOOK_NOW: 'Book with obligation to pay',
   SECURE_PAYMENT_INFO: 'Your data is protected by SSL secure payment.',
   CARD_DATE_ERROR: 'Invalid card date.',
   BOOKING_SUCCESS: 'Your payment was successfully done. We sent you a confirmation email.',

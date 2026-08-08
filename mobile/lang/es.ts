@@ -161,7 +161,7 @@ export const es = {
   CARD_NUMBER_NOT_VALID: 'Número de tarjeta no válido',
   CVV: 'Código de seguridad',
   CVV_NOT_VALID: 'Código de seguridad no válido',
-  BOOK_NOW: 'Reservar',
+  BOOK_NOW: 'Reservar con obligación de pago',
   SECURE_PAYMENT_INFO: 'Tus datos están protegidos por el pago seguro SSL.',
   CARD_DATE_ERROR: 'Fecha de tarjeta no válida.',
   BOOKING_SUCCESS: 'Tu pago se ha realizado con éxito. Te hemos enviado un correo de confirmación.',
