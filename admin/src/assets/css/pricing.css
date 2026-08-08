@@ -39,10 +39,9 @@ ul.pricing-plan-features li {
 @media only screen and (width <=960px) {
   .pricing-plans {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   .pricing-plan {
@@ -60,10 +59,9 @@ ul.pricing-plan-features li {
 @media only screen and (width >=960px) {
   .pricing-plans {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     margin: 100px 0;
   }
 

@@ -2,6 +2,7 @@ section.car-list {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
 }
 
 section.car-list .empty-list {
@@ -59,10 +60,6 @@ section.car-list div.car-header div.distance img {
   margin-right: 5px;
 }
 
-section.car-list {
-  padding-top: 10px;
-}
-
 section.car-list article {
   background: #fff;
   border: 1px solid #eee;
@@ -82,7 +79,6 @@ section.car-list article div.car {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   position: relative;
   top: 0;
   overflow: hidden;
@@ -160,7 +156,6 @@ section.car-list article div.car-info div.car-info-header {
 section.car-list article div.car-info div.car-info-header div.name {
   padding: 0 11px;
   pointer-events: none;
-
   font-size: 1.4em;
   font-weight: 700;
   text-size-adjust: none;
@@ -168,7 +163,7 @@ section.car-list article div.car-info div.car-info-header div.name {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
 }

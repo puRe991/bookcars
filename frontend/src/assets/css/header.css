@@ -58,7 +58,7 @@
 }
 
 .header .btn:hover {
-  background-color: rgba(0, 0, 0, 0.07) !important;
+  background-color: rgb(0 0 0 / 7%) !important;
 }
 
 .header .btn-auth span.btn-auth-txt {

@@ -27,7 +27,7 @@ section.country-list .country-list-item {
   font-size: 12px;
   margin-bottom: 10px;
   height: 75px;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 section.country-list .country-title {

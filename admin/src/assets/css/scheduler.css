@@ -67,10 +67,7 @@ div.scheduler {
 
   div.scheduler div.col-2 {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 320px;
+    inset: 0 0 0 320px;
   }
 
   div.scheduler div.col-1 .cl-supplier-filter label.accordion,

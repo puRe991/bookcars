@@ -44,7 +44,6 @@ div.checkout-options span.checkout-option-value {
 /* Device width is less than or equal to 960px */
 
 @media only screen and (width <=960px) {
-
   div.checkout-options span.checkout-option-value {
     display: table-row;
   }
@@ -54,7 +53,6 @@ div.checkout-options span.checkout-option-value {
 /* Device width is greater than or equal to 960px */
 
 @media only screen and (width >=960px) {
-
   div.checkout-options-container {
     width: 800px;
   }

@@ -27,10 +27,11 @@ div.supplier-badge {
   div.supplier-badge a.supplier-badge-info {
     color: #0064c8;
     font-size: 0.9em;
+
     /* line-height: 1em; */
     white-space: nowrap;
     margin-left: 5px;
-    word-break: break-word;
+    overflow-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 200px;

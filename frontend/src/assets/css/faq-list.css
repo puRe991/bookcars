@@ -11,7 +11,7 @@ div.faq-list h2 {
 }
 
 div.faq-list div.questions {
-  margin: 20px 120px 70px 120px;
+  margin: 20px 120px 70px;
   max-width: 1068px;
 }
 
@@ -26,6 +26,6 @@ div.faq-list div.questions .accordion-details {
 
 @media only screen and (width <=960px) {
   div.faq-list div.questions {
-    margin: 20px 0 70px 0;
+    margin: 20px 0 70px;
   }
 }

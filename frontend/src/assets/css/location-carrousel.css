@@ -62,7 +62,7 @@ div.location-caroussel div.box h2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;

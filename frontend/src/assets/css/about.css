@@ -5,7 +5,7 @@ div.about {
   align-items: flex-start;
   transform: translate3d(0, 0, 0);
   white-space: pre-wrap;
-  padding: 50px 20% 120px 20%;
+  padding: 50px 20% 120px;
   font-size: 15px;
   color: #1a1a1a;
   min-height: 100vh;
@@ -25,6 +25,7 @@ div.about h2 {
 
 div.about p {
   font-size: 20px;
+
   /* font-weight: 400; */
   color: #000;
   margin-bottom: 40px;
@@ -32,6 +33,6 @@ div.about p {
 
 @media only screen and (width <=960px) {
   div.about {
-    padding: 30px 20px 120px 20px;
+    padding: 30px 20px 120px;
   }
 }

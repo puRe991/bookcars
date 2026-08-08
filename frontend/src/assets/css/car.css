@@ -2,6 +2,7 @@ div.car-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
 }
 
 div.car-container article .btn-book {
@@ -11,7 +12,9 @@ div.car-container article .btn-book {
   height: 42px;
   margin: 0;
   white-space: nowrap;
+
   /* font-size: 1.5em; */
+
   /* font-weight: 400; */
   padding: 0 20px;
 }
@@ -66,10 +69,6 @@ div.car-container div.car-header div.distance img {
   margin-right: 5px;
 }
 
-div.car-container {
-  padding-top: 10px;
-}
-
 div.car-container article {
   background: #fff;
   border: 1px solid #eee;
@@ -89,7 +88,6 @@ div.car-container article div.car {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   position: relative;
   top: 0;
   overflow: hidden;
@@ -137,50 +135,50 @@ div.car-container article div.car div.car-supplier span.car-supplier-info {
   line-height: 1em;
   white-space: nowrap;
   margin-left: 5px;
-  word-break: break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 200px;
 }
 
-div.car-container article div.car .car-footer {
+div.car-container article div.car div.car-footer {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 10px;
 }
 
-div.car-container article div.car .car-footer div.rating,
-div.car-container article div.car .car-footer div.co2 {
+div.car-container article div.car div.car-footer div.rating,
+div.car-container article div.car div.car-footer div.co2 {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-div.car-container article div.car .car-footer div.rating img {
+div.car-container article div.car div.car-footer div.rating img {
   max-width: 16px;
   max-height: 16px;
   margin: 0 5px;
 }
 
-div.car-container article div.car .car-footer div.rating span.value {
+div.car-container article div.car div.car-footer div.rating span.value {
   font-weight: 600;
 }
 
-div.car-container article div.car .car-footer div.rating span.trips {
+div.car-container article div.car div.car-footer div.rating span.trips {
   color: #A2A2A2;
   font-size: 11px;
 }
 
-div.car-container article div.car .car-footer div.co2 {
+div.car-container article div.car div.car-footer div.co2 {
   margin-left: 20px;
 }
 
-div.car-container article div.car .car-footer div.co2 span {
+div.car-container article div.car div.car-footer div.co2 span {
   font-weight: 600;
 }
 
-div.car-container article div.car .car-footer div.co2 img {
+div.car-container article div.car div.car-footer div.co2 img {
   max-width: 19px;
   max-height: 5px;
   margin-right: 5px;
@@ -201,7 +199,6 @@ div.car-container article div.car-info div.car-info-header {
 div.car-container article div.car-info div.car-info-header div.name {
   padding: 0 11px;
   pointer-events: none;
-
   font-size: 1.8em;
   font-weight: 700;
   text-size-adjust: none;
@@ -209,7 +206,7 @@ div.car-container article div.car-info div.car-info-header div.name {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -235,8 +232,7 @@ div.car-container article span.price-day {
   font-size: 13px;
   color: #C1C1C1;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: flex-end;
   width: max-content;
 }
@@ -297,7 +293,9 @@ div.car-container article div.car-info ul.extras-list li {
 
 div.car-container article div.car-info ul.extras-list .available {
   /* color: #1f9201; */
+
   /* color: #006CE4; */
+
   /* color: #003B95; */
 }
 
@@ -307,7 +305,9 @@ div.car-container article div.car-info ul.extras-list .unavailable {
 
 div.car-container article div.car-info ul.extras-list .extra-info {
   /* color: rgb(0 0 0 / 35%); */
+
   /* color: #006CE4; */
+
   /* color: #003B95; */
 }
 
@@ -361,7 +361,7 @@ div.car-container article div.action {
     width: calc(100% - 20px);
   }
 
-  div.car-container article div.car .car-footer {
+  div.car-container article div.car div.car-footer {
     margin-bottom: 20px;
   }
 

@@ -27,7 +27,7 @@ section.location-list .location-list-item {
   font-size: 12px;
   margin-bottom: 10px;
   min-height: 75px;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 section.location-list .location-title {
