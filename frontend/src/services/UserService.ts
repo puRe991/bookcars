@@ -312,6 +312,27 @@ export const updateUser = (data: bookcarsTypes.UpdateUserPayload): Promise<numbe
     .then((res) => res.status)
 
 /**
+ * List the signed-in user's invoices.
+ *
+ * @returns {Promise<bookcarsTypes.Invoice[]>}
+ */
+export const getMyInvoices = (): Promise<bookcarsTypes.Invoice[]> =>
+  axiosInstance
+    .get('/api/my-invoices', { withCredentials: true })
+    .then((res) => res.data)
+
+/**
+ * Download an invoice PDF.
+ *
+ * @param {string} id
+ * @returns {Promise<Blob>}
+ */
+export const downloadInvoice = (id: string): Promise<Blob> =>
+  axiosInstance
+    .get(`/api/invoice/${encodeURIComponent(id)}`, { withCredentials: true, responseType: 'blob' })
+    .then((res) => res.data)
+
+/**
  * Request a newsletter subscription. Sends a confirmation email; the address is
  * only subscribed once that link is followed (double opt-in).
  *

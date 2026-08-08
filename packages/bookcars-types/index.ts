@@ -187,6 +187,12 @@ export interface UpdateSupplierPayload {
   supplierCarLimit?: number
   notifyAdminOnNewCar?: boolean
   blacklisted?: boolean
+  // Supplier billing details, used when invoices are issued by the supplier.
+  invoiceAddress?: string
+  vatId?: string
+  taxNumber?: string
+  registerCourt?: string
+  registerNumber?: string
 }
 
 export interface CreateCarPayload {
@@ -305,6 +311,12 @@ export interface CreateUserPayload {
   priceChangeRate?: number
   supplierCarLimit?: number
   notifyAdminOnNewCar?: boolean
+  // Supplier billing details, used when invoices are issued by the supplier.
+  invoiceAddress?: string
+  vatId?: string
+  taxNumber?: string
+  registerCourt?: string
+  registerNumber?: string
 }
 
 export interface UpdateUserPayload extends CreateUserPayload {
@@ -410,6 +422,12 @@ export interface User {
   priceChangeRate?: number
   supplierCarLimit?: number
   notifyAdminOnNewCar?: boolean
+  // Supplier billing details, used when invoices are issued by the supplier.
+  invoiceAddress?: string
+  vatId?: string
+  taxNumber?: string
+  registerCourt?: string
+  registerNumber?: string
 }
 
 export interface Option {
@@ -631,6 +649,8 @@ export interface Setting {
   minRentalHours: number
   minPickupDropoffHour: number
   maxPickupDropoffHour: number
+  invoiceIssuer: InvoiceIssuer
+  invoiceNumberPrefix: string
   /**
    * VAT rate in percent applied to rental prices, e.g. 19 for Germany.
    * All prices in the system are gross (VAT inclusive), so this rate is used
@@ -645,11 +665,70 @@ export interface UpdateSettingsPayload {
   minPickupDropoffHour: number
   maxPickupDropoffHour: number
   vatRate: number
+  invoiceIssuer: InvoiceIssuer
+  invoiceNumberPrefix: string
 }
 
 /**
  * Gross/net split of a price for a given VAT rate.
  */
+/**
+ * Who issues invoices for a booking.
+ * In a marketplace the supplier is normally the contracting party; in
+ * single-supplier setups the platform operator issues them itself.
+ */
+export enum InvoiceIssuer {
+  Platform = 'platform',
+  Supplier = 'supplier',
+}
+
+export enum InvoiceType {
+  Invoice = 'invoice',
+  CreditNote = 'creditNote',
+}
+
+export interface InvoiceParty {
+  name: string
+  address?: string
+  vatId?: string
+  taxNumber?: string
+  registerCourt?: string
+  registerNumber?: string
+  email?: string
+  phone?: string
+}
+
+export interface InvoiceLineItem {
+  description: string
+  quantity: number
+  net: number
+  vatRate: number
+  vatAmount: number
+  gross: number
+}
+
+export interface Invoice {
+  _id: string
+  number: string
+  type: InvoiceType
+  booking: string | Booking
+  supplier: string | User
+  driver: string | User
+  issuedAt: Date
+  currency: string
+  seller: InvoiceParty
+  buyer: InvoiceParty
+  lineItems: InvoiceLineItem[]
+  net: number
+  vatRate: number
+  vatAmount: number
+  gross: number
+  serviceFrom: Date
+  serviceTo: Date
+  pdf?: string
+  relatedInvoice?: string
+}
+
 export interface NewsletterSubscribePayload {
   email: string
 }

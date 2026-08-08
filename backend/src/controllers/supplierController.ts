@@ -92,6 +92,11 @@ export const update = async (req: Request, res: Response) => {
         supplierCarLimit,
         notifyAdminOnNewCar,
         blacklisted,
+        invoiceAddress,
+        vatId,
+        taxNumber,
+        registerCourt,
+        registerNumber,
       } = body
       supplier.fullName = fullName
       supplier.phone = phone
@@ -104,6 +109,11 @@ export const update = async (req: Request, res: Response) => {
       supplier.supplierCarLimit = supplierCarLimit
       supplier.notifyAdminOnNewCar = notifyAdminOnNewCar
       supplier.blacklisted = !!blacklisted
+      supplier.invoiceAddress = invoiceAddress
+      supplier.vatId = vatId
+      supplier.taxNumber = taxNumber
+      supplier.registerCourt = registerCourt
+      supplier.registerNumber = registerNumber
 
       await supplier.save()
       res.json({

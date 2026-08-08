@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import * as bookcarsTypes from ':bookcars-types'
 import * as env from '../config/env.config'
 
 const settingSchema = new Schema<env.Setting>({
@@ -33,6 +34,19 @@ const settingSchema = new Schema<env.Setting>({
     default: 19,
     min: 0,
     max: 100,
+  },
+  //
+  // Who issues invoices: the platform operator or the individual supplier.
+  //
+  invoiceIssuer: {
+    type: String,
+    enum: [bookcarsTypes.InvoiceIssuer.Platform, bookcarsTypes.InvoiceIssuer.Supplier],
+    default: bookcarsTypes.InvoiceIssuer.Platform,
+  },
+  invoiceNumberPrefix: {
+    type: String,
+    default: 'RE',
+    trim: true,
   },
 }, {
   timestamps: true,

@@ -17,6 +17,7 @@ import NotificationCounter from '../models/NotificationCounter'
 import PushToken from '../models/PushToken'
 import AdditionalDriver from '../models/AdditionalDriver'
 import Setting from '../models/Setting'
+import * as invoiceHelper from '../utils/invoiceHelper'
 import * as helper from '../utils/helper'
 import * as mailHelper from '../utils/mailHelper'
 import * as env from '../config/env.config'
@@ -382,6 +383,8 @@ export const checkout = async (req: Request, res: Response) => {
       await car.save()
     }
 
+    await invoiceHelper.maybeIssueForBooking(booking)
+
     if (body.payLater || (booking.status === bookcarsTypes.BookingStatus.Paid && body.paymentIntentId && body.customerId)) {
       // Mark car as fully booked
       // if (env.MARK_CAR_AS_FULLY_BOOKED_ON_CHECKOUT) {
@@ -637,6 +640,8 @@ export const update = async (req: Request, res: Response) => {
       if (previousStatus !== status) {
         // notify driver
         await notifyDriver(booking)
+        // A booking moved into a paid state by an admin also needs an invoice.
+        await invoiceHelper.maybeIssueForBooking(booking)
       }
 
       res.json(booking)

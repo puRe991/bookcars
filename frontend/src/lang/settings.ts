@@ -14,6 +14,11 @@ const strings = new LocalizedStrings({
     DELETE_ACCOUNT_INFO: 'Ihre personenbezogenen Daten werden gelöscht (Art. 17 DSGVO). Buchungsbelege bleiben aus steuer- und handelsrechtlichen Gründen in anonymisierter Form erhalten.',
     DELETE_ACCOUNT_CONFIRM: 'Möchten Sie Ihr Konto wirklich endgültig löschen? Dieser Schritt kann nicht rückgängig gemacht werden.',
     DELETE_ACCOUNT_ERROR: 'Das Konto konnte nicht gelöscht werden.',
+    INVOICES_TITLE: 'Rechnungen',
+    INVOICES_EMPTY: 'Keine Rechnungen vorhanden.',
+    INVOICE_DOWNLOAD: 'Herunterladen',
+    INVOICE_CREDIT_NOTE: 'Stornorechnung',
+    INVOICE_ERROR: 'Die Rechnung konnte nicht geladen werden.',
   },
   fr: {
     SETTINGS_UPDATED: 'Paramètres modifiés avec succès.',
@@ -27,6 +32,11 @@ const strings = new LocalizedStrings({
     DELETE_ACCOUNT_INFO: 'Vos données personnelles seront supprimées (art. 17 du RGPD). Les justificatifs de réservation sont conservés sous forme anonymisée pour respecter les obligations légales de conservation.',
     DELETE_ACCOUNT_CONFIRM: 'Voulez-vous vraiment supprimer définitivement votre compte ? Cette action est irréversible.',
     DELETE_ACCOUNT_ERROR: 'Le compte n’a pas pu être supprimé.',
+    INVOICES_TITLE: 'Factures',
+    INVOICES_EMPTY: 'Aucune facture pour le moment.',
+    INVOICE_DOWNLOAD: 'Télécharger',
+    INVOICE_CREDIT_NOTE: 'Avoir',
+    INVOICE_ERROR: 'La facture n’a pas pu être téléchargée.',
   },
   en: {
     SETTINGS_UPDATED: 'Settings updated successfully.',
@@ -40,6 +50,11 @@ const strings = new LocalizedStrings({
     DELETE_ACCOUNT_INFO: 'Your personal data will be deleted (GDPR Art. 17). Booking records are retained in anonymised form to satisfy statutory retention periods.',
     DELETE_ACCOUNT_CONFIRM: 'Do you really want to permanently delete your account? This cannot be undone.',
     DELETE_ACCOUNT_ERROR: 'The account could not be deleted.',
+    INVOICES_TITLE: 'Invoices',
+    INVOICES_EMPTY: 'No invoices yet.',
+    INVOICE_DOWNLOAD: 'Download',
+    INVOICE_CREDIT_NOTE: 'Credit note',
+    INVOICE_ERROR: 'The invoice could not be downloaded.',
   },
   es: {
     SETTINGS_UPDATED: 'Configuración actualizada correctamente.',
@@ -53,6 +68,11 @@ const strings = new LocalizedStrings({
     DELETE_ACCOUNT_INFO: 'Sus datos personales se eliminarán (art. 17 del RGPD). Los justificantes de reserva se conservan de forma anonimizada para cumplir los plazos legales de conservación.',
     DELETE_ACCOUNT_CONFIRM: '¿Seguro que desea eliminar definitivamente su cuenta? Esta acción no se puede deshacer.',
     DELETE_ACCOUNT_ERROR: 'No se ha podido eliminar la cuenta.',
+    INVOICES_TITLE: 'Facturas',
+    INVOICES_EMPTY: 'Todavía no hay facturas.',
+    INVOICE_DOWNLOAD: 'Descargar',
+    INVOICE_CREDIT_NOTE: 'Abono',
+    INVOICE_ERROR: 'No se ha podido descargar la factura.',
   },
 })
 

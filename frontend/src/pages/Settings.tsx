@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Input,
@@ -40,6 +40,7 @@ const Settings = () => {
   const [visible, setVisible] = useState(false)
   const [loading, setLoading] = useState(true)
   const [enableEmailNotifications, setEnableEmailNotifications] = useState(false)
+  const [invoices, setInvoices] = useState<bookcarsTypes.Invoice[]>([])
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
@@ -49,6 +50,36 @@ const Settings = () => {
   })
 
   const birthDate = useWatch({ control, name: 'birthDate' })
+
+  useEffect(() => {
+    const fetchInvoices = async () => {
+      try {
+        setInvoices(await UserService.getMyInvoices())
+      } catch (err) {
+        helper.error(err)
+      }
+    }
+
+    if (user?._id) {
+      fetchInvoices()
+    }
+  }, [user?._id])
+
+  const handleDownloadInvoice = async (invoice: bookcarsTypes.Invoice) => {
+    try {
+      const blob = await UserService.downloadInvoice(invoice._id)
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `${invoice.number}.pdf`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    } catch (err) {
+      helper.error(err, strings.INVOICE_ERROR)
+    }
+  }
 
   const handleExportData = async () => {
     try {
@@ -268,6 +299,33 @@ const Settings = () => {
               <FormControl component="fieldset">
                 <FormControlLabel control={<Switch checked={enableEmailNotifications} onChange={handleEmailNotificationsChange} />} label={strings.SETTINGS_EMAIL_NOTIFICATIONS} />
               </FormControl>
+            </Paper>
+
+            <Paper className="settings-net settings-net-wrapper" elevation={10}>
+              <h1 className="settings-form-title">{strings.INVOICES_TITLE}</h1>
+              {invoices.length === 0
+                ? <p className="settings-privacy-info">{strings.INVOICES_EMPTY}</p>
+                : (
+                  <ul className="settings-invoices">
+                    {invoices.map((invoice) => (
+                      <li key={invoice._id}>
+                        <span className="invoice-number">{invoice.number}</span>
+                        <span className="invoice-date">
+                          {new Date(invoice.issuedAt).toLocaleDateString(user?.language || undefined)}
+                        </span>
+                        <span className="invoice-amount">
+                          {bookcarsHelper.formatPrice(invoice.gross, invoice.currency, user?.language || 'de')}
+                        </span>
+                        {invoice.type === bookcarsTypes.InvoiceType.CreditNote && (
+                          <span className="invoice-tag">{strings.INVOICE_CREDIT_NOTE}</span>
+                        )}
+                        <Button size="small" variant="outlined" onClick={() => handleDownloadInvoice(invoice)}>
+                          {strings.INVOICE_DOWNLOAD}
+                        </Button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
             </Paper>
 
             <Paper className="settings-net settings-net-wrapper" elevation={10}>

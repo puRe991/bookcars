@@ -68,7 +68,12 @@ const UpdateSupplier = () => {
       minimumRentalDays: '',
       priceChangeRate: '',
       supplierCarLimit: '',
-      notifyAdminOnNewCar: false
+      notifyAdminOnNewCar: false,
+      invoiceAddress: '',
+      vatId: '',
+      taxNumber: '',
+      registerCourt: '',
+      registerNumber: '',
     },
   })
 
@@ -150,6 +155,11 @@ const UpdateSupplier = () => {
               setValue('minimumRentalDays', _supplier.minimumRentalDays?.toString() || '')
               setValue('priceChangeRate', _supplier.priceChangeRate?.toString() || '')
               setValue('supplierCarLimit', _supplier.supplierCarLimit?.toString() || '')
+              setValue('invoiceAddress', _supplier.invoiceAddress || '')
+              setValue('vatId', _supplier.vatId || '')
+              setValue('taxNumber', _supplier.taxNumber || '')
+              setValue('registerCourt', _supplier.registerCourt || '')
+              setValue('registerNumber', _supplier.registerNumber || '')
               setValue('notifyAdminOnNewCar', !!_supplier.notifyAdminOnNewCar)
               setValue('blacklisted', !!_supplier.blacklisted)
               setVisible(true)
@@ -209,6 +219,11 @@ const UpdateSupplier = () => {
         minimumRentalDays: data.minimumRentalDays ? Number(data.minimumRentalDays) : undefined,
         priceChangeRate: data.priceChangeRate ? Number(data.priceChangeRate) : undefined,
         supplierCarLimit: data.supplierCarLimit ? Number(data.supplierCarLimit) : undefined,
+        invoiceAddress: data.invoiceAddress,
+        vatId: data.vatId,
+        taxNumber: data.taxNumber,
+        registerCourt: data.registerCourt,
+        registerNumber: data.registerNumber,
         notifyAdminOnNewCar: data.notifyAdminOnNewCar,
         blacklisted: !!data.blacklisted,
       }
@@ -370,6 +385,32 @@ const UpdateSupplier = () => {
                 <FormHelperText error={!!errors.supplierCarLimit}>
                   {errors.supplierCarLimit?.message || ''}
                 </FormHelperText>
+              </FormControl>
+
+              <FormControl fullWidth margin="dense">
+                <InputLabel>{commonStrings.INVOICE_ADDRESS}</InputLabel>
+                <Input {...register('invoiceAddress')} type="text" multiline autoComplete="off" />
+                <FormHelperText>{commonStrings.INVOICE_ADDRESS_INFO}</FormHelperText>
+              </FormControl>
+
+              <FormControl fullWidth margin="dense">
+                <InputLabel>{commonStrings.VAT_ID}</InputLabel>
+                <Input {...register('vatId')} type="text" autoComplete="off" />
+              </FormControl>
+
+              <FormControl fullWidth margin="dense">
+                <InputLabel>{commonStrings.TAX_NUMBER}</InputLabel>
+                <Input {...register('taxNumber')} type="text" autoComplete="off" />
+              </FormControl>
+
+              <FormControl fullWidth margin="dense">
+                <InputLabel>{commonStrings.REGISTER_COURT}</InputLabel>
+                <Input {...register('registerCourt')} type="text" autoComplete="off" />
+              </FormControl>
+
+              <FormControl fullWidth margin="dense">
+                <InputLabel>{commonStrings.REGISTER_NUMBER}</InputLabel>
+                <Input {...register('registerNumber')} type="text" autoComplete="off" />
               </FormControl>
 
               <FormControl fullWidth margin="dense">

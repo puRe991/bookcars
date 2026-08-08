@@ -122,6 +122,8 @@ describe('PUT /api/update-settings', () => {
       minPickupDropoffHour: 9,
       maxPickupDropoffHour: 19,
       vatRate: 19,
+      invoiceIssuer: bookcarsTypes.InvoiceIssuer.Platform,
+      invoiceNumberPrefix: 'RE',
     }
 
     let res = await request(app)
@@ -134,6 +136,8 @@ describe('PUT /api/update-settings', () => {
     expect(res.body.minPickupDropoffHour).toBe(payload.minPickupDropoffHour)
     expect(res.body.maxPickupDropoffHour).toBe(payload.maxPickupDropoffHour)
     expect(res.body.vatRate).toBe(payload.vatRate)
+    expect(res.body.invoiceIssuer).toBe(payload.invoiceIssuer)
+    expect(res.body.invoiceNumberPrefix).toBe(payload.invoiceNumberPrefix)
     const _settings = await Setting.findOne({})
     expect(_settings).toBeTruthy()
     expect(_settings!.minPickupHours).toBe(payload.minPickupHours)

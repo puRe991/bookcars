@@ -450,6 +450,35 @@ export const IPINFO_DEFAULT_COUNTRY = __env__('BC_IPINFO_DEFAULT_COUNTRY', false
  *
  * @type {number}
  */
+/**
+ * Invoice storage directory. Invoices must be retained for ten years
+ * (§ 147 AO), so this should point at durable, backed-up storage.
+ *
+ * @type {string}
+ */
+/**
+ * Three-letter ISO 4217 currency the business charges in. Used on invoices.
+ *
+ * @type {string}
+ */
+export const BASE_CURRENCY = __env__('BC_BASE_CURRENCY', false, 'EUR')
+
+export const CDN_INVOICES = __env__('BC_CDN_INVOICES', false, '/var/www/cdn/bookcars/invoices')
+
+/**
+ * Details of the platform operator, used as the invoice issuer when
+ * `invoiceIssuer` is set to "platform". § 14 UStG requires the full name and
+ * address plus either the VAT ID or the tax number.
+ */
+export const COMPANY_NAME = __env__('BC_COMPANY_NAME', false, '')
+export const COMPANY_ADDRESS = __env__('BC_COMPANY_ADDRESS', false, '')
+export const COMPANY_VAT_ID = __env__('BC_COMPANY_VAT_ID', false, '')
+export const COMPANY_TAX_NUMBER = __env__('BC_COMPANY_TAX_NUMBER', false, '')
+export const COMPANY_REGISTER_COURT = __env__('BC_COMPANY_REGISTER_COURT', false, '')
+export const COMPANY_REGISTER_NUMBER = __env__('BC_COMPANY_REGISTER_NUMBER', false, '')
+export const COMPANY_EMAIL = __env__('BC_COMPANY_EMAIL', false, '')
+export const COMPANY_PHONE = __env__('BC_COMPANY_PHONE', false, '')
+
 export const NEWSLETTER_CONFIRMATION_EXPIRE_AT = Number.parseInt(__env__('BC_NEWSLETTER_CONFIRMATION_EXPIRE_AT', false, '604800'), 10)
 
 /**
@@ -557,6 +586,15 @@ export interface User extends Document {
   priceChangeRate?: number
   supplierCarLimit?: number
   notifyAdminOnNewCar?: boolean
+  //
+  // Supplier billing details, used as the invoice issuer when
+  // `invoiceIssuer` is set to "supplier".
+  //
+  invoiceAddress?: string
+  vatId?: string
+  taxNumber?: string
+  registerCourt?: string
+  registerNumber?: string
 }
 
 /**
@@ -945,6 +983,52 @@ export interface BankDetails extends Document {
  * @typedef {BankDetails}
  * @extends {Document}
  */
+export interface Counter extends Document<string> {
+  _id: string
+  seq: number
+}
+
+export interface InvoiceParty {
+  name: string
+  address?: string
+  vatId?: string
+  taxNumber?: string
+  registerCourt?: string
+  registerNumber?: string
+  email?: string
+  phone?: string
+}
+
+export interface InvoiceLineItem {
+  description: string
+  quantity: number
+  net: number
+  vatRate: number
+  vatAmount: number
+  gross: number
+}
+
+export interface Invoice extends Document {
+  number: string
+  type: bookcarsTypes.InvoiceType
+  booking: Types.ObjectId
+  supplier: Types.ObjectId
+  driver: Types.ObjectId
+  issuedAt: Date
+  currency: string
+  seller: InvoiceParty
+  buyer: InvoiceParty
+  lineItems: InvoiceLineItem[]
+  net: number
+  vatRate: number
+  vatAmount: number
+  gross: number
+  serviceFrom: Date
+  serviceTo: Date
+  pdf?: string
+  relatedInvoice?: Types.ObjectId
+}
+
 export interface NewsletterSubscription extends Document {
   email: string
   confirmed: boolean
@@ -960,6 +1044,8 @@ export interface Setting extends Document {
   minPickupDropoffHour: number
   maxPickupDropoffHour: number
   vatRate: number
+  invoiceIssuer: bookcarsTypes.InvoiceIssuer
+  invoiceNumberPrefix: string
 }
 
 /**

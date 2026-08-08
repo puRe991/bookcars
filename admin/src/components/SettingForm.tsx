@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button, FormControl, FormHelperText, Input, InputLabel, Paper } from '@mui/material'
+import { Button, FormControl, FormHelperText, Input, InputLabel, MenuItem, Paper, Select } from '@mui/material'
 import * as bookcarsTypes from ':bookcars-types'
 import { strings as commonStrings } from '@/lang/common'
 import { strings as settingsStrings } from '@/lang/settings'
@@ -31,6 +31,8 @@ const SettingForm = ({ settings, onSubmit: onFormSubmit }: SettingFormProps) => 
       setValue('minPickupDropoffHour', settings.minPickupDropoffHour.toString())
       setValue('maxPickupDropoffHour', settings.maxPickupDropoffHour.toString())
       setValue('vatRate', settings.vatRate.toString())
+      setValue('invoiceIssuer', settings.invoiceIssuer)
+      setValue('invoiceNumberPrefix', settings.invoiceNumberPrefix)
     }
   }, [settings, setValue])
 
@@ -42,6 +44,8 @@ const SettingForm = ({ settings, onSubmit: onFormSubmit }: SettingFormProps) => 
         minPickupDropoffHour: Number(data.minPickupDropoffHour),
         maxPickupDropoffHour: Number(data.maxPickupDropoffHour),
         vatRate: Number(data.vatRate),
+        invoiceIssuer: data.invoiceIssuer as bookcarsTypes.InvoiceIssuer,
+        invoiceNumberPrefix: data.invoiceNumberPrefix,
       }
 
       const { status, data: res } = await SettingService.updateSettings(payload)
@@ -102,6 +106,24 @@ const SettingForm = ({ settings, onSubmit: onFormSubmit }: SettingFormProps) => 
           <FormHelperText>{strings.VAT_RATE_INFO}</FormHelperText>
           {errors.vatRate && (
             <FormHelperText error>{errors.vatRate.message}</FormHelperText>
+          )}
+        </FormControl>
+
+        <FormControl fullWidth margin="dense">
+          <InputLabel className="required">{strings.INVOICE_ISSUER}</InputLabel>
+          <Select {...register('invoiceIssuer')} label={strings.INVOICE_ISSUER} defaultValue={bookcarsTypes.InvoiceIssuer.Platform} variant="standard">
+            <MenuItem value={bookcarsTypes.InvoiceIssuer.Platform}>{strings.INVOICE_ISSUER_PLATFORM}</MenuItem>
+            <MenuItem value={bookcarsTypes.InvoiceIssuer.Supplier}>{strings.INVOICE_ISSUER_SUPPLIER}</MenuItem>
+          </Select>
+          <FormHelperText>{strings.INVOICE_ISSUER_INFO}</FormHelperText>
+        </FormControl>
+
+        <FormControl fullWidth margin="dense">
+          <InputLabel className="required">{strings.INVOICE_NUMBER_PREFIX}</InputLabel>
+          <Input {...register('invoiceNumberPrefix')} type="text" required autoComplete="off" />
+          <FormHelperText>{strings.INVOICE_NUMBER_PREFIX_INFO}</FormHelperText>
+          {errors.invoiceNumberPrefix && (
+            <FormHelperText error>{errors.invoiceNumberPrefix.message}</FormHelperText>
           )}
         </FormControl>
 

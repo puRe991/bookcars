@@ -7,6 +7,7 @@ import * as env from '../config/env.config'
 import * as helper from '../utils/helper'
 import Booking from '../models/Booking'
 import User from '../models/User'
+import * as invoiceHelper from '../utils/invoiceHelper'
 import Car from '../models/Car'
 import * as bookingController from './bookingController'
 
@@ -141,6 +142,8 @@ export const checkCheckoutSession = async (req: Request, res: Response) => {
       booking.status = status
 
       await booking.save()
+
+      await invoiceHelper.maybeIssueForBooking(booking)
 
       const car = await Car.findById(booking.car)
       if (!car) {

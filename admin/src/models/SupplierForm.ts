@@ -14,6 +14,12 @@ export const schema = z.object({
     minimumRentalDays: z.string().refine((val) => !val || /^\d+$/.test(val), { message: commonStrings.FIELD_NOT_VALID }).optional(),
     priceChangeRate: z.string().refine((val) => !val || /^-?\d+(\.\d+)?$/.test(val), { message: commonStrings.FIELD_NOT_VALID }).optional(),
     supplierCarLimit: z.string().refine((val) => !val || /^\d+$/.test(val), { message: commonStrings.FIELD_NOT_VALID }).optional(),
+    // Billing details, required when invoices are issued by the supplier.
+    invoiceAddress: z.string().optional(),
+    vatId: z.string().optional(),
+    taxNumber: z.string().optional(),
+    registerCourt: z.string().optional(),
+    registerNumber: z.string().optional(),
     notifyAdminOnNewCar: z.boolean().optional()
 })
 

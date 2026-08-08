@@ -60,6 +60,8 @@ export const updateSettings = async (req: Request, res: Response) => {
       minPickupDropoffHour,
       maxPickupDropoffHour,
       vatRate,
+      invoiceIssuer,
+      invoiceNumberPrefix,
     }: bookcarsTypes.UpdateSettingsPayload = req.body
     const settings = await Setting.findOne({})
 
@@ -69,6 +71,8 @@ export const updateSettings = async (req: Request, res: Response) => {
       settings.minPickupDropoffHour = minPickupDropoffHour
       settings.maxPickupDropoffHour = maxPickupDropoffHour
       settings.vatRate = vatRate
+      settings.invoiceIssuer = invoiceIssuer
+      settings.invoiceNumberPrefix = invoiceNumberPrefix
 
       await settings.save()
 

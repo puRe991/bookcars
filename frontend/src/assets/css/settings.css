@@ -68,3 +68,37 @@ div.settings p.settings-privacy-info {
   color: rgb(0 0 0 / 60%);
   max-width: 520px;
 }
+
+div.settings ul.settings-invoices {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  max-width: 560px;
+}
+
+div.settings ul.settings-invoices li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+div.settings ul.settings-invoices .invoice-number {
+  font-weight: 600;
+  min-width: 150px;
+}
+
+div.settings ul.settings-invoices .invoice-amount {
+  margin-left: auto;
+}
+
+div.settings ul.settings-invoices .invoice-tag {
+  background: #fdecea;
+  color: #7f1d1a;
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 12px;
+}

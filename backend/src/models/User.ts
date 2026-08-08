@@ -133,6 +133,31 @@ const userSchema = new Schema<env.User>(
     notifyAdminOnNewCar: {
       type: Boolean,
     },
+    //
+    // Supplier billing details, used as the invoice issuer when
+    // `invoiceIssuer` is set to "supplier". § 14 UStG requires the full name
+    // and address plus either the VAT ID or the tax number.
+    //
+    invoiceAddress: {
+      type: String,
+      trim: true,
+    },
+    vatId: {
+      type: String,
+      trim: true,
+    },
+    taxNumber: {
+      type: String,
+      trim: true,
+    },
+    registerCourt: {
+      type: String,
+      trim: true,
+    },
+    registerNumber: {
+      type: String,
+      trim: true,
+    },
     expireAt: {
       //
       // Non verified and active users created from checkout with Stripe are temporary and
